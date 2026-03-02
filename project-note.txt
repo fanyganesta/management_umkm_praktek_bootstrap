@@ -1,0 +1,206 @@
+Sidebar Menu Structure
+
+A. Main
+-Dashboard
+B. Product Management
+-Products
+-Categories
+-Inventory
+C. Sales
+-Orders
+-Transactions
+D. Customer
+-Customers
+-Reviews
+E. Marketing
+-Discounts
+-Campaign
+F. Reports
+-Sales Report
+-Product Performance
+G. Settings
+-Store Settings
+-User Management
+
+
+
+
+🧠 1️⃣ DASHBOARD
+1. Total Revenue
+2. Total Orders
+3. Total Products
+4. Low Stock Alert
+5. Recent Orders
+6. Top Selling Products
+
+Jadi dashboard ambil dari:
+1. orders
+2. order_items
+3. products
+4. customers
+
+2️⃣ PRODUCT MANAGEMENT
+A. Products
+Tabel: products
+
+Kolom minimum:
+id
+name
+slug
+sku
+category_id
+description
+base_price
+weight
+status (active / draft / archived)
+created_at
+updated_at
+
+Kalau fashion (realistis):
+gender (men / women / unisex)
+material
+thumbnail_image
+is_featured
+
+B. Categories
+Tabel: categories
+id
+name
+slug
+parent_id (untuk sub category)
+description
+created_at
+
+Fashion biasanya:
+Tops
+Bottoms
+Outerwear
+Accessories
+
+C. Inventory
+Fashion biasanya punya size & color.
+Tabel: product_variants
+id
+product_id
+size (S, M, L, XL)
+color
+stock
+additional_price
+sku_variant
+
+💰 3️⃣ SALES
+A. Orders
+Tabel: orders
+id
+invoice_number
+customer_id
+total_amount
+shipping_cost
+discount_amount
+final_amount
+payment_status (paid / unpaid / refunded)
+order_status (pending / shipped / completed / cancelled)
+shipping_address
+created_at
+
+B. Order Items
+Tabel: order_items
+id
+order_id
+product_id
+variant_id
+quantity
+price
+subtotal
+
+C. Transactions
+Tabel: transactions
+id
+order_id
+payment_method
+payment_reference
+amount
+status
+paid_at
+
+👥 4️⃣ CUSTOMER
+A. Customers
+Tabel: customers
+id
+name
+email
+phone
+gender
+date_of_birth
+total_spent
+created_at
+
+B. Reviews
+Tabel: reviews
+id
+product_id
+customer_id
+rating (1-5)
+comment
+status (approved / pending)
+created_at
+
+📢 5️⃣ MARKETING
+A. Discounts
+Tabel: discounts
+id
+code
+type (percentage / fixed)
+value
+minimum_purchase
+start_date
+end_date
+usage_limit
+is_active
+
+B. Campaign
+Campaign biasanya untuk tracking promo.
+Tabel: campaigns
+id
+name
+description
+start_date
+end_date
+budget
+status
+Kalau advanced:
+utm_source
+utm_medium
+
+📊 6️⃣ REPORTS
+Reports itu hasil query dari:
+orders
+order_items
+products
+
+Tidak perlu tabel khusus kecuali mau simpan snapshot.
+
+⚙️ 7️⃣ SETTINGS
+A. Store Settings
+Tabel: store_settings
+id
+store_name
+email
+phone
+address
+logo
+currency
+tax_percentage
+
+B. User Management
+Tabel: users
+id
+name
+email
+password
+role (admin / staff / manager)
+is_active
+last_login_at
+
+Kalau mau advanced:
+permissions (json)
