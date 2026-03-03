@@ -8,16 +8,20 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
 
     <style>
-        .offcanvas{
+        .offcanvas-md{
             --bs-offcanvas-width: 230px;
+            height: 100%;
+            overflow-y: auto;
         }
 
-        .offcanvas-md{
-            position: static;
-            overflow-y: auto;
-            display: flex;
-            flex-direction: column;
-            overflow-x: hidden;
+        @media(min-width: 760px){
+            .offcanvas-md{
+                position: static;
+                overflow-y: auto;
+                display: flex;
+                flex-direction: column;
+                overflow-x: hidden;
+            }
         }
     </style>
 
@@ -133,6 +137,14 @@
                     </ul>
                 </div>
             </div>
+
+
+            
+
+            <main class="container-fluid flex-grow-1 bg-primary">
+
+            </main>
+
         </div>
 
         

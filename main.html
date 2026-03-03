@@ -8,16 +8,20 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
 
     <style>
-        .offcanvas{
+        .offcanvas-md{
             --bs-offcanvas-width: 230px;
+            height: 100%;
+            overflow-y: auto;
         }
 
-        .offcanvas-md{
-            position: static;
-            overflow-y: auto;
-            display: flex;
-            flex-direction: column;
-            overflow-x: hidden;
+        @media(min-width: 760px){
+            .offcanvas-md{
+                position: static;
+                overflow-y: auto;
+                display: flex;
+                flex-direction: column;
+                overflow-x: hidden;
+            }
         }
     </style>
 
@@ -133,6 +137,116 @@
                     </ul>
                 </div>
             </div>
+
+
+            
+
+            <main class="container-fluid flex-grow-1 py-4 h-100  overflow-y-auto">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-12 col-md-4 mb-2">
+                            <div class="card">
+                                <div class="card-body">
+                                    <label for="" class="form-label text-muted">Total Revenue</label>
+                                    <h5>Rp. 35.430.000</h5>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-md-4 mb-2">
+                            <div class="card">
+                                <div class="card-body">
+                                    <label for="" class="form-label text-muted">Total Orders</label>
+                                    <h5>320 orders</h5>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-md-4 mb-2">
+                            <div class="card">
+                                <div class="card-body">
+                                    <label for="" class="form-label text-muted">Total Products</label>
+                                    <h5>973 pcs</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-12 col-md-6">
+                            <div class="card">
+                                <div class="card-header">
+                                    Low Stock Alert
+                                </div>
+                                <div class="card-body">
+                                    <table class="table table-hover align-middle mb-0" style="font-size: 0.85rem;">
+                                    <thead class="table-light">
+                                        <tr>
+                                            <th>Product</th>
+                                            <th class="text-center">Stock</th>
+                                            <th>Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td class="fw-bold">Kopi Arabika 250g</td>
+                                            <td class="text-center text-danger">5</td>
+                                            <td><span class="badge bg-danger">Critical</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="fw-bold">Susu UHT Full Cream</td>
+                                            <td class="text-center text-danger">8</td>
+                                            <td><span class="badge bg-danger">Critical</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="fw-bold">Sirup Vanilla 1L</td>
+                                            <td class="text-center text-warning">12</td>
+                                            <td><span class="badge bg-warning text-dark">Warning</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="fw-bold">Paper Filter V60</td>
+                                            <td class="text-center text-danger">3</td>
+                                            <td><span class="badge bg-danger">Critical</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="fw-bold">Bubuk Cokelat Premium</td>
+                                            <td class="text-center text-warning">15</td>
+                                            <td><span class="badge bg-warning text-dark">Warning</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="fw-bold">Teh Earl Grey (Box)</td>
+                                            <td class="text-center text-danger">2</td>
+                                            <td><span class="badge bg-danger">Critical</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="fw-bold">Gula Aren Cair</td>
+                                            <td class="text-center text-warning">10</td>
+                                            <td><span class="badge bg-warning text-dark">Warning</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="fw-bold">Sedotan Bambu</td>
+                                            <td class="text-center text-warning">18</td>
+                                            <td><span class="badge bg-warning text-dark">Warning</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="fw-bold">Biji Kopi Robusta</td>
+                                            <td class="text-center text-danger">4</td>
+                                            <td><span class="badge bg-danger">Critical</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="fw-bold">Oat Milk 1L</td>
+                                            <td class="text-center text-danger">6</td>
+                                            <td><span class="badge bg-danger">Critical</span></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+
         </div>
 
         
