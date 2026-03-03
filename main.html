@@ -143,7 +143,7 @@
 
             <main class="container-fluid flex-grow-1 py-4 h-100  overflow-y-auto">
                 <div class="container-fluid">
-                    <div class="row">
+                    <div class="row mb-3">
                         <div class="col-12 col-md-4 mb-2">
                             <div class="card">
                                 <div class="card-body">
@@ -172,78 +172,204 @@
                         </div>
                     </div>
 
-                    <div class="row">
+                    <div class="row g-3">
                         <div class="col-12 col-md-6">
-                            <div class="card">
+                            <div class="card h-100">
                                 <div class="card-header">
-                                    Low Stock Alert
+                                    <h6 class="m-0">Low Stock Alert</h6>
                                 </div>
-                                <div class="card-body">
-                                    <table class="table table-hover align-middle mb-0" style="font-size: 0.85rem;">
-                                    <thead class="table-light">
-                                        <tr>
-                                            <th>Product</th>
-                                            <th class="text-center">Stock</th>
-                                            <th>Status</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td class="fw-bold">Kopi Arabika 250g</td>
-                                            <td class="text-center text-danger">5</td>
-                                            <td><span class="badge bg-danger">Critical</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td class="fw-bold">Susu UHT Full Cream</td>
-                                            <td class="text-center text-danger">8</td>
-                                            <td><span class="badge bg-danger">Critical</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td class="fw-bold">Sirup Vanilla 1L</td>
-                                            <td class="text-center text-warning">12</td>
-                                            <td><span class="badge bg-warning text-dark">Warning</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td class="fw-bold">Paper Filter V60</td>
-                                            <td class="text-center text-danger">3</td>
-                                            <td><span class="badge bg-danger">Critical</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td class="fw-bold">Bubuk Cokelat Premium</td>
-                                            <td class="text-center text-warning">15</td>
-                                            <td><span class="badge bg-warning text-dark">Warning</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td class="fw-bold">Teh Earl Grey (Box)</td>
-                                            <td class="text-center text-danger">2</td>
-                                            <td><span class="badge bg-danger">Critical</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td class="fw-bold">Gula Aren Cair</td>
-                                            <td class="text-center text-warning">10</td>
-                                            <td><span class="badge bg-warning text-dark">Warning</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td class="fw-bold">Sedotan Bambu</td>
-                                            <td class="text-center text-warning">18</td>
-                                            <td><span class="badge bg-warning text-dark">Warning</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td class="fw-bold">Biji Kopi Robusta</td>
-                                            <td class="text-center text-danger">4</td>
-                                            <td><span class="badge bg-danger">Critical</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td class="fw-bold">Oat Milk 1L</td>
-                                            <td class="text-center text-danger">6</td>
-                                            <td><span class="badge bg-danger">Critical</span></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+                                <div class="card-body d-flex flex-column">                                    
+                                    <div class="table-responsive flex-grow-1">
+                                        <table class="table table-hover align-middle mb-0">
+                                            <thead class="table-light">
+                                                <tr>
+                                                    <th>Product</th>
+                                                    <th class="text-center">Stock</th>
+                                                    <th>Status</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td class="fw-bold">Kopi Arabika 250g</td>
+                                                    <td class="text-center text-danger">5</td>
+                                                    <td><span class="badge bg-danger">Critical</span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="fw-bold">Susu UHT Full Cream</td>
+                                                    <td class="text-center text-danger">8</td>
+                                                    <td><span class="badge bg-danger">Critical</span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="fw-bold">Sirup Vanilla 1L</td>
+                                                    <td class="text-center text-warning">12</td>
+                                                    <td><span class="badge bg-warning text-dark">Warning</span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="fw-bold">Paper Filter V60</td>
+                                                    <td class="text-center text-danger">3</td>
+                                                    <td><span class="badge bg-danger">Critical</span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="fw-bold">Bubuk Cokelat Premium</td>
+                                                    <td class="text-center text-warning">15</td>
+                                                    <td><span class="badge bg-warning text-dark">Warning</span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="fw-bold">Teh Earl Grey (Box)</td>
+                                                    <td class="text-center text-danger">2</td>
+                                                    <td><span class="badge bg-danger">Critical</span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="fw-bold">Gula Aren Cair</td>
+                                                    <td class="text-center text-warning">10</td>
+                                                    <td><span class="badge bg-warning text-dark">Warning</span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="fw-bold">Sedotan Bambu</td>
+                                                    <td class="text-center text-warning">18</td>
+                                                    <td><span class="badge bg-warning text-dark">Warning</span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="fw-bold">Biji Kopi Robusta</td>
+                                                    <td class="text-center text-danger">4</td>
+                                                    <td><span class="badge bg-danger">Critical</span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="fw-bold">Oat Milk 1L</td>
+                                                    <td class="text-center text-danger">6</td>
+                                                    <td><span class="badge bg-danger">Critical</span></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-md-6">
+                            <div class="card h-100">
+                                <div class="card-header">
+                                    <h6 class="m-0">Recent Orders</h6>
+                                </div>
+                                <div class="card-body d-flex flex-column">
+                                    <div class="table-responsive flex-grow-1">
+                                        <table class="table table-hover align-middle mb-0 text-nowrap">
+                                            <thead class="table-light">
+                                                <tr>
+                                                    <th class="ps-3">Order ID</th>
+                                                    <th>Customer</th>
+                                                    <th>Product</th>
+                                                    <th>Date</th>
+                                                    <th>Amount</th>
+                                                    <th class="text-center">Status</th>
+                                                    <th class="pe-3 text-center">Action</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td class="ps-3 text-primary fw-bold">#ORD-9921</td>
+                                                    <td>Budi Santoso</td>
+                                                    <td>Kopi Arabika 250g</td>
+                                                    <td>04 Mar 2026</td>
+                                                    <td class="fw-bold">Rp 85.000</td>
+                                                    <td class="text-center"><span class="badge rounded-pill bg-success">Completed</span></td>
+                                                    <td class="text-center"><button class="btn btn-sm btn-light"><i class="bi bi-eye"></i></button></td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="ps-3 text-primary fw-bold">#ORD-9922</td>
+                                                    <td>Siti Aminah</td>
+                                                    <td>Susu UHT 1L (3x)</td>
+                                                    <td>04 Mar 2026</td>
+                                                    <td class="fw-bold">Rp 54.000</td>
+                                                    <td class="text-center"><span class="badge rounded-pill bg-warning text-dark">Pending</span></td>
+                                                    <td class="text-center"><button class="btn btn-sm btn-light"><i class="bi bi-eye"></i></button></td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="ps-3 text-primary fw-bold">#ORD-9923</td>
+                                                    <td>Andi Wijaya</td>
+                                                    <td>Paper Filter V60</td>
+                                                    <td>03 Mar 2026</td>
+                                                    <td class="fw-bold">Rp 45.000</td>
+                                                    <td class="text-center"><span class="badge rounded-pill bg-info">Shipping</span></td>
+                                                    <td class="text-center"><button class="btn btn-sm btn-light"><i class="bi bi-eye"></i></button></td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="ps-3 text-primary fw-bold">#ORD-9924</td>
+                                                    <td>Dewi Lestari</td>
+                                                    <td>Sirup Vanilla 1L</td>
+                                                    <td>03 Mar 2026</td>
+                                                    <td class="fw-bold">Rp 120.000</td>
+                                                    <td class="text-center"><span class="badge rounded-pill bg-success">Completed</span></td>
+                                                    <td class="text-center"><button class="btn btn-sm btn-light"><i class="bi bi-eye"></i></button></td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="ps-3 text-primary fw-bold">#ORD-9925</td>
+                                                    <td>Rizky Pratama</td>
+                                                    <td>Gula Aren 1kg</td>
+                                                    <td>03 Mar 2026</td>
+                                                    <td class="fw-bold">Rp 35.000</td>
+                                                    <td class="text-center"><span class="badge rounded-pill bg-danger">Cancelled</span></td>
+                                                    <td class="text-center"><button class="btn btn-sm btn-light"><i class="bi bi-eye"></i></button></td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="ps-3 text-primary fw-bold">#ORD-9926</td>
+                                                    <td>Linda Wahyuni</td>
+                                                    <td>Teh Earl Grey</td>
+                                                    <td>02 Mar 2026</td>
+                                                    <td class="fw-bold">Rp 65.000</td>
+                                                    <td class="text-center"><span class="badge rounded-pill bg-success">Completed</span></td>
+                                                    <td class="text-center"><button class="btn btn-sm btn-light"><i class="bi bi-eye"></i></button></td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="ps-3 text-primary fw-bold">#ORD-9927</td>
+                                                    <td>Eko Prasetyo</td>
+                                                    <td>Biji Kopi Robusta</td>
+                                                    <td>02 Mar 2026</td>
+                                                    <td class="fw-bold">Rp 75.000</td>
+                                                    <td class="text-center"><span class="badge rounded-pill bg-info">Shipping</span></td>
+                                                    <td class="text-center"><button class="btn btn-sm btn-light"><i class="bi bi-eye"></i></button></td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="ps-3 text-primary fw-bold">#ORD-9928</td>
+                                                    <td>Maya Sari</td>
+                                                    <td>Oat Milk 1L</td>
+                                                    <td>02 Mar 2026</td>
+                                                    <td class="fw-bold">Rp 48.000</td>
+                                                    <td class="text-center"><span class="badge rounded-pill bg-success">Completed</span></td>
+                                                    <td class="text-center"><button class="btn btn-sm btn-light"><i class="bi bi-eye"></i></button></td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="ps-3 text-primary fw-bold">#ORD-9929</td>
+                                                    <td>Hendra Kurnia</td>
+                                                    <td>Grinder Manual</td>
+                                                    <td>01 Mar 2026</td>
+                                                    <td class="fw-bold">Rp 250.000</td>
+                                                    <td class="text-center"><span class="badge rounded-pill bg-warning text-dark">Pending</span></td>
+                                                    <td class="text-center"><button class="btn btn-sm btn-light"><i class="bi bi-eye"></i></button></td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="ps-3 text-primary fw-bold">#ORD-9930</td>
+                                                    <td>Siska Putri</td>
+                                                    <td>Timbangan Digital</td>
+                                                    <td>01 Mar 2026</td>
+                                                    <td class="fw-bold">Rp 185.000</td>
+                                                    <td class="text-center"><span class="badge rounded-pill bg-success">Completed</span></td>
+                                                    <td class="text-center"><button class="btn btn-sm btn-light"><i class="bi bi-eye"></i></button></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+
+                    
+
+
+
+
+
                 </div>
             </main>
 
