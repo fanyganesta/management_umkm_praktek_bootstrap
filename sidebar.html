@@ -1,158 +1,97 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MANAGEMENT UMKM</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
-
-    <style>
-        .offcanvas-md{
-            --bs-offcanvas-width: 230px;
-            height: 100%;
-            overflow-y: auto;
-        }
-
-        @media(min-width: 760px){
-            .offcanvas-md{
-                position: static;
-                overflow-y: auto;
-                display: flex;
-                flex-direction: column;
-                overflow-x: hidden;
-            }
-        }
-    </style>
-
-</head>
-<body>
-    <div class="container-fluid d-flex flex-column p-0 vh-100">
-        <div class="navbar navbar-expand-md bg-dark" data-bs-theme="dark">
-            <div class="container-fluid">
-                <div class="navbar-brand ms-2">Tokomu</div>
-                <div class="d-flex ms-auto">
-                    <button class="navbar-toggler" data-bs-target="#sidebar" data-bs-toggle="collapse" type="button">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                </div>
-            </div>
-        </div>
-
-        <div class="container-fluid p-0 d-flex flex-grow-1 overflow-hidden">
-            <div class="offcanvas-md" id="sidebar">
+    
                 <div class="d-flex bg-dark text-light p-3" style="width: 260px;">
                     <ul class="nav nav-pills flex-column mb-auto">
                         <li class="nav-item mb-4">
                             <h6>Main</h6>
-                            <a href="#" class="nav-link text-light active">
+                            <a href="main.html" class="nav-link text-light">
                                 <i class="bi bi-speedometer me-2"></i>
                                 Dashboard
                             </a>
                         </li>
                         <li class="nav-item">
                             <h6>Product Management</h6>
-                            <a href="#" class="nav-link text-light">
+                            <a href="products.html" class="nav-link text-light">
                                 <i class="bi bi-box-seam me-2"></i>
                                 Products
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link text-light">
+                            <a href="#categories" class="nav-link text-light">
                                 <i class="bi bi-tags me-2"></i>
                                 Categories
                             </a>
                         </li>
                         <li class="nav-item mb-4">
-                            <a href="#" class="nav-link text-light">
+                            <a href="#inventory" class="nav-link text-light">
                                 <i class="bi bi-archive me-2"></i>
                                 Inventory
                             </a>
                         </li>
                         <li class="nav-item">
                             <h6>Sales</h6>
-                            <a href="#" class="nav-link text-light">
+                            <a href="#orders" class="nav-link text-light">
                                 <i class="bi bi-receipt me-2"></i>
                                 Orders
                             </a>
                         </li>
                         <li class="nav-item mb-4">
-                            <a href="#" class="nav-link text-light">
+                            <a href="#transactions" class="nav-link text-light">
                                 <i class="bi bi-card-list me-2"></i>
                                 Transactions
                             </a>
                         </li>
                         <li class="nav-item">
                             <h6>Customer</h6>
-                            <a href="#" class="nav-link text-light">
+                            <a href="#customers" class="nav-link text-light">
                                 <i class="bi bi-people me-2"></i>
                                 Customers
                             </a>
                         </li>
                         <li class="nav-item mb-4">
-                            <a href="#" class="nav-link text-light">
+                            <a href="#reviews" class="nav-link text-light">
                                 <i class="bi bi-chat-quote me-2"></i>
                                 Reviews
                             </a>
                         </li>
                         <li class="nav-item">
                             <h6>Marketing</h6>
-                            <a href="#" class="nav-link text-light">
+                            <a href="#discount" class="nav-link text-light">
                                 <i class="bi bi-patch-check me-2"></i>
                                 Discount
                             </a>
                         </li>
                         <li class="nav-item mb-4">
-                            <a href="#" class="nav-link text-light">
+                            <a href="#campaign" class="nav-link text-light">
                                 <i class="bi bi-megaphone me-2"></i>
                                 Campaign
                             </a>
                         </li>
                         <li class="nav-item">
                             <h6>Reports</h6>
-                            <a href="#" class="nav-link text-light">
+                            <a href="#salesreport" class="nav-link text-light">
                                 <i class="bi bi-graph-up me-2"></i>
                                 Sales Report
                             </a>
                         </li>
                         <li class="nav-item mb-4">
-                            <a href="#" class="nav-link text-light">
+                            <a href="#productperformance" class="nav-link text-light">
                                 <i class="bi bi-clipboard-data me-2"></i>
                                 Product Performance
                             </a>
                         </li>
                         <li class="nav-item">
                             <h6>Settings</h6>
-                            <a href="#" class="nav-link text-light">
+                            <a href="#storesettings" class="nav-link text-light">
                                 <i class="bi bi-gear-wide-connected me-2"></i>
                                 Store Settings
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link text-light">
+                            <a href="#usersmanagement" class="nav-link text-light">
                                 <i class="bi bi-person-circle me-2"></i>
                                 Users Management
                             </a>
                         </li>
                     </ul>
                 </div>
-            </div>
-
-
             
-
-            <main class="container-fluid flex-grow-1 bg-primary">
-
-            </main>
-
-        </div>
-
-        
-    </div>
-
-    
-
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-</html>

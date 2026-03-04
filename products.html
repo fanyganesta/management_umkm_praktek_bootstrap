@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MANAGEMENT UMKM</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+
+</head>
+<body>
+    <style>
+        .offcanvas-md{
+            --bs-offcanvas-width: 230px;
+            height: 100%;
+            overflow-y: auto;
+        }
+
+        @media(min-width: 760px){
+            .offcanvas-md{
+                position: static;
+                overflow-y: auto;
+                display: flex;
+                flex-direction: column;
+                overflow-x: hidden;
+            }
+
+            .text-md-sm{
+                font-size: 0.75rem;
+            }
+        }
+    </style>
+
+
+    <!-- MAIN SAMA DENGAN INDEX -->
+    <div class="container-fluid d-flex flex-column p-0 vh-100">  
+        <div class="navbar navbar-expand-md bg-dark" data-bs-theme="dark">
+            <div class="container-fluid">
+                <div class="navbar-brand ms-2">Tokomu</div>
+                <div class="d-flex ms-auto">
+                    <button class="navbar-toggler" data-bs-target="#sidebar" data-bs-toggle="collapse" type="button">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="container-fluid p-0 d-flex flex-grow-1 overflow-hidden">
+            <div class="offcanvas-md" id="sidebar"> 
+                <div id="layout">
+                    <script>
+                        fetch('sidebar.html').then(response => response.text()).then(data => {document.getElementById('layout').innerHTML = data;
+                    
+
+                        const CurrentPage = window.location.pathname.split('/').pop() || 'index.html';
+                        const Links = document.querySelectorAll('.nav a');
+
+                        Links.forEach(link =>{
+                            if(CurrentPage == 'index.html'){
+                                document.querySelector('a[href^="main.html"]').classList.add('active');
+                            }else if(CurrentPage == link.getAttribute('href')){
+                                link.classList.add('active');
+                            }
+                        });
+
+                            }); 
+                    </script>
+                </div>
+            </div>
+        
+            <main class="container-fluid flex-grow-1 py-4 h-100  overflow-y-auto">
+                <div class="container-fluid p-0">
+                    <div class="row g-2 mb-3">
+                        <div class="col-12 col-md-3">
+                            <div class="card">
+                                <div class="card-body rounded bg-primary text-light">
+                                    <label for="" class="form-label">Total Revenue</label>
+                                    <h5>Rp. 35.430.000</h5>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-3">
+                            <div class="card">
+                                <div class="card-body rounded bg-success text-light">
+                                    <label for="" class="form-label">Total Product</label>
+                                    <h5>5231 pcs</h5>
+                                </div>
+                            </div>    
+                        </div>
+                        <div class="col-12 col-md-3">
+                            <div class="card">
+                                <div class="card-body rounded bg-warning text-dark">
+                                    <label for="" class="form-label">Low Stock Count</label>
+                                    <h5>58 producs</h5>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-3">
+                            <div class="card">
+                                <div class="card-body rounded bg-danger text-light">
+                                    <label for="" class="form-label">Out of Stock</label>
+                                    <h5>19 products</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                        <div class="row g-2 mb-3">
+                            <div class="col-12 col-md-2 mb-2">
+                                <div class="card h-100">
+                                    <div class="card-header">
+                                        <h6 class="m-0 text-danger">Low Stock Alert</h6>
+                                    </div>
+                                    <div class="card-body p-0 d-flex flex-column">
+                                        <div class="table-responsive flex-grow-1">
+                                            <table class="table table-sm table-hover  text-md-sm h-100">
+                                                <thead class="table-light">
+                                                    <tr>
+                                                        <th class="ps-2">Product</th>
+                                                        <th class="text-center">Qty</th>
+                                                        <th class="text-center pe-2">Action</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td class="ps-2 fw-bold text-truncate" style="max-width: 70px;">Arabika</td>
+                                                        <td class="text-center text-danger">3</td>
+                                                        <td class="text-center pe-2">
+                                                            <a href="#" class="text-primary"><i class="bi bi-eye"></i></a>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="ps-2 fw-bold text-truncate" style="max-width: 70px;">UHT Milk</td>
+                                                        <td class="text-center text-danger">5</td>
+                                                        <td class="text-center pe-2">
+                                                            <a href="#" class="text-primary"><i class="bi bi-eye"></i></a>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="ps-2 fw-bold text-truncate" style="max-width: 70px;">Vanilla</td>
+                                                        <td class="text-center text-danger">2</td>
+                                                        <td class="text-center pe-2">
+                                                            <a href="#" class="text-primary"><i class="bi bi-eye"></i></a>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="ps-2 fw-bold text-truncate" style="max-width: 70px;">V60 Pap</td>
+                                                        <td class="text-center text-danger">8</td>
+                                                        <td class="text-center pe-2">
+                                                            <a href="#" class="text-primary"><i class="bi bi-eye"></i></a>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="ps-2 fw-bold text-truncate" style="max-width: 70px;">Oatmilk</td>
+                                                        <td class="text-center text-danger">4</td>
+                                                        <td class="text-center pe-2">
+                                                            <a href="#" class="text-primary"><i class="bi bi-eye"></i></a>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="ps-2 fw-bold text-truncate" style="max-width: 70px;">Gula Aren</td>
+                                                        <td class="text-center text-danger">4</td>
+                                                        <td class="text-center pe-2">
+                                                            <a href="#" class="text-primary"><i class="bi bi-eye"></i></a>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="ps-2 fw-bold text-truncate" style="max-width: 70px;">Choco Pwd</td>
+                                                        <td class="text-center text-danger">2</td>
+                                                        <td class="text-center pe-2">
+                                                            <a href="#" class="text-primary"><i class="bi bi-eye"></i></a>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="ps-2 fw-bold text-truncate" style="max-width: 70px;">Tea Bags</td>
+                                                        <td class="text-center text-danger">9</td>
+                                                        <td class="text-center pe-2">
+                                                            <a href="#" class="text-primary"><i class="bi bi-eye"></i></a>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="ps-2 fw-bold text-truncate" style="max-width: 70px;">Cup 16oz</td>
+                                                        <td class="text-center text-danger">15</td>
+                                                        <td class="text-center pe-2">
+                                                            <a href="#" class="text-primary"><i class="bi bi-eye"></i></a>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="ps-2 fw-bold text-truncate" style="max-width: 70px;">Cleaning</td>
+                                                        <td class="text-center text-danger">1</td>
+                                                        <td class="text-center pe-2">
+                                                            <a href="#" class="text-primary"><i class="bi bi-eye"></i></a>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-5 mb-2">
+                                <div class="card h-100">
+                                    <div class="card-header">
+                                        <h6 class="m-0">Sales Trend</h6>
+                                    </div>
+                                    <div class="card-body">
+                                        <div style="position: relative; height: 100%">
+                                            <canvas id="salesChart"></canvas>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-5 mb-2">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h6 class="m-0">Product Sales by Categories</h6>
+                                    </div>
+                                    <div class="card-body">
+                                        <div style="position: relative; height:300px; width: 100%;">
+                                            <canvas id="categoryChart"></canvas>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-header d-flex justify-content-between align-items-center">
+                                    <h6 class="m-0">List Products</h6>
+                                    <div class="dropdown">
+                                        <button class="btn btn-light" data-bs-toggle="dropdown">
+                                            <i class="bi bi-three-dots-vertical"></i>
+                                        </button>
+                                        <ul class="dropdown-menu">
+                                            <li class="dropdown-item">Export</li>
+                                            <li class="dropdown-item">Import</li>
+                                            <li class="dropdown-item">Bulk Delete</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                        <table class="table table-hover align-middle mb-0 text-nowrap w-100">
+                                            <thead class="table-light">
+                                                <tr>
+                                                    <th class="ps-3" style="width: 50px;">No</th>
+                                                    <th style="width: 80px;">Image</th>
+                                                    <th>Product Name</th>
+                                                    <th>SKU</th>
+                                                    <th>Category</th>
+                                                    <th>Price</th>
+                                                    <th class="text-center">Stock</th>
+                                                    <th class="text-center">Status</th>
+                                                    <th class="text-center pe-3">Actions</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td class="ps-3 text-muted">1</td>
+                                                    <td>
+                                                        <img src="https://via.placeholder.com/50" class="rounded border" alt="product">
+                                                    </td>
+                                                    <td>
+                                                        <div class="fw-bold text-dark">Kopi Arabika Toraja 250g</div>
+                                                        <small class="text-muted">High quality beans</small>
+                                                    </td>
+                                                    <td><code class="text-primary">COF-TRJ-01</code></td>
+                                                    <td><span class="badge bg-light text-dark border">Coffee Beans</span></td>
+                                                    <td class="fw-bold">Rp 85.000</td>
+                                                    <td class="text-center">120</td>
+                                                    <td class="text-center">
+                                                        <span class="badge bg-success-subtle text-success">Active</span>
+                                                    </td>
+                                                    <td class="text-center pe-3">
+                                                        <div class="btn-group">
+                                                            <button class="btn btn-sm btn-outline-secondary"><i class="bi bi-eye"></i></button>
+                                                            <button class="btn btn-sm btn-outline-primary"><i class="bi bi-pencil"></i></button>
+                                                            <button class="btn btn-sm btn-outline-danger"><i class="bi bi-trash"></i></button>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td class="ps-3 text-muted">2</td>
+                                                    <td>
+                                                        <img src="https://via.placeholder.com/50" class="rounded border" alt="product">
+                                                    </td>
+                                                    <td>
+                                                        <div class="fw-bold text-dark">Susu UHT Full Cream 1L</div>
+                                                        <small class="text-muted">Diamond Brand</small>
+                                                    </td>
+                                                    <td><code class="text-primary">DRY-UHT-02</code></td>
+                                                    <td><span class="badge bg-light text-dark border">Dairy</span></td>
+                                                    <td class="fw-bold">Rp 19.500</td>
+                                                    <td class="text-center text-danger fw-bold">12</td>
+                                                    <td class="text-center">
+                                                        <span class="badge bg-warning-subtle text-warning">Low Stock</span>
+                                                    </td>
+                                                    <td class="text-center pe-3">
+                                                        <div class="btn-group">
+                                                            <button class="btn btn-sm btn-outline-secondary"><i class="bi bi-eye"></i></button>
+                                                            <button class="btn btn-sm btn-outline-primary"><i class="bi bi-pencil"></i></button>
+                                                            <button class="btn btn-sm btn-outline-danger"><i class="bi bi-trash"></i></button>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td class="ps-3 text-muted">3</td>
+                                                    <td>
+                                                        <img src="https://via.placeholder.com/50" class="rounded border" alt="product">
+                                                    </td>
+                                                    <td>
+                                                        <div class="fw-bold text-dark">Sirup Vanilla 750ml</div>
+                                                        <small class="text-muted">Monin Premium</small>
+                                                    </td>
+                                                    <td><code class="text-primary">SYP-VAN-03</code></td>
+                                                    <td><span class="badge bg-light text-dark border">Syrup</span></td>
+                                                    <td class="fw-bold">Rp 145.000</td>
+                                                    <td class="text-center">45</td>
+                                                    <td class="text-center">
+                                                        <span class="badge bg-success-subtle text-success">Active</span>
+                                                    </td>
+                                                    <td class="text-center pe-3">
+                                                        <div class="btn-group">
+                                                            <button class="btn btn-sm btn-outline-secondary"><i class="bi bi-eye"></i></button>
+                                                            <button class="btn btn-sm btn-outline-primary"><i class="bi bi-pencil"></i></button>
+                                                            <button class="btn btn-sm btn-outline-danger"><i class="bi bi-trash"></i></button>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td class="ps-3 text-muted">4</td>
+                                                    <td>
+                                                        <img src="https://via.placeholder.com/50" class="rounded border" alt="product">
+                                                    </td>
+                                                    <td>
+                                                        <div class="fw-bold text-dark">Paper Filter V60 02</div>
+                                                        <small class="text-muted">Hario 100pcs</small>
+                                                    </td>
+                                                    <td><code class="text-primary">TLS-PPR-04</code></td>
+                                                    <td><span class="badge bg-light text-dark border">Tools</span></td>
+                                                    <td class="fw-bold">Rp 65.000</td>
+                                                    <td class="text-center">210</td>
+                                                    <td class="text-center">
+                                                        <span class="badge bg-success-subtle text-success">Active</span>
+                                                    </td>
+                                                    <td class="text-center pe-3">
+                                                        <div class="btn-group">
+                                                            <button class="btn btn-sm btn-outline-secondary"><i class="bi bi-eye"></i></button>
+                                                            <button class="btn btn-sm btn-outline-primary"><i class="bi bi-pencil"></i></button>
+                                                            <button class="btn btn-sm btn-outline-danger"><i class="bi bi-trash"></i></button>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td class="ps-3 text-muted">5</td>
+                                                    <td>
+                                                        <img src="https://via.placeholder.com/50" class="rounded border" alt="product">
+                                                    </td>
+                                                    <td>
+                                                        <div class="fw-bold text-dark">Gula Aren Cair 1L</div>
+                                                        <small class="text-muted">Organic Sweetener</small>
+                                                    </td>
+                                                    <td><code class="text-primary">SWT-ARE-05</code></td>
+                                                    <td><span class="badge bg-light text-dark border">Sweetener</span></td>
+                                                    <td class="fw-bold">Rp 55.000</td>
+                                                    <td class="text-center text-secondary fw-bold">0</td>
+                                                    <td class="text-center">
+                                                        <span class="badge bg-danger-subtle text-danger">Out of Stock</span>
+                                                    </td>
+                                                    <td class="text-center pe-3">
+                                                        <div class="btn-group">
+                                                            <button class="btn btn-sm btn-outline-secondary"><i class="bi bi-eye"></i></button>
+                                                            <button class="btn btn-sm btn-outline-primary"><i class="bi bi-pencil"></i></button>
+                                                            <button class="btn btn-sm btn-outline-danger"><i class="bi bi-trash"></i></button>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="ps-3 text-muted">6</td>
+                                                    <td><img src="https://via.placeholder.com/50" class="rounded border" alt="product"></td>
+                                                    <td>
+                                                        <div class="fw-bold text-dark">Croissant Butter</div>
+                                                        <small class="text-muted">Freshly Baked Daily</small>
+                                                    </td>
+                                                    <td><code class="text-primary">SNK-CRS-06</code></td>
+                                                    <td><span class="badge bg-light text-dark border">Pastry</span></td>
+                                                    <td class="fw-bold">Rp 22.000</td>
+                                                    <td class="text-center">25</td>
+                                                    <td class="text-center"><span class="badge bg-success-subtle text-success">Active</span></td>
+                                                    <td class="text-center pe-3">
+                                                        <div class="btn-group">
+                                                            <button class="btn btn-sm btn-outline-secondary"><i class="bi bi-eye"></i></button>
+                                                            <button class="btn btn-sm btn-outline-primary"><i class="bi bi-pencil"></i></button>
+                                                            <button class="btn btn-sm btn-outline-danger"><i class="bi bi-trash"></i></button>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td class="ps-3 text-muted">7</td>
+                                                    <td><img src="https://via.placeholder.com/50" class="rounded border" alt="product"></td>
+                                                    <td>
+                                                        <div class="fw-bold text-dark">Oat Milk Barista 1L</div>
+                                                        <small class="text-muted">Oatside Brand</small>
+                                                    </td>
+                                                    <td><code class="text-primary">DRY-OAT-07</code></td>
+                                                    <td><span class="badge bg-light text-dark border">Dairy</span></td>
+                                                    <td class="fw-bold">Rp 42.000</td>
+                                                    <td class="text-center text-danger fw-bold">8</td>
+                                                    <td class="text-center"><span class="badge bg-warning-subtle text-warning">Low Stock</span></td>
+                                                    <td class="text-center pe-3">
+                                                        <div class="btn-group">
+                                                            <button class="btn btn-sm btn-outline-secondary"><i class="bi bi-eye"></i></button>
+                                                            <button class="btn btn-sm btn-outline-primary"><i class="bi bi-pencil"></i></button>
+                                                            <button class="btn btn-sm btn-outline-danger"><i class="bi bi-trash"></i></button>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td class="ps-3 text-muted">8</td>
+                                                    <td><img src="https://via.placeholder.com/50" class="rounded border" alt="product"></td>
+                                                    <td>
+                                                        <div class="fw-bold text-dark">Kopi Robusta Lampung</div>
+                                                        <small class="text-muted">Dark Roast 500g</small>
+                                                    </td>
+                                                    <td><code class="text-primary">COF-LMP-08</code></td>
+                                                    <td><span class="badge bg-light text-dark border">Coffee Beans</span></td>
+                                                    <td class="fw-bold">Rp 65.000</td>
+                                                    <td class="text-center text-secondary fw-bold">0</td>
+                                                    <td class="text-center"><span class="badge bg-danger-subtle text-danger">Out of Stock</span></td>
+                                                    <td class="text-center pe-3">
+                                                        <div class="btn-group">
+                                                            <button class="btn btn-sm btn-outline-secondary"><i class="bi bi-eye"></i></button>
+                                                            <button class="btn btn-sm btn-outline-primary"><i class="bi bi-pencil"></i></button>
+                                                            <button class="btn btn-sm btn-outline-danger"><i class="bi bi-trash"></i></button>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td class="ps-3 text-muted">9</td>
+                                                    <td><img src="https://via.placeholder.com/50" class="rounded border" alt="product"></td>
+                                                    <td>
+                                                        <div class="fw-bold text-dark">Matcha Powder 500g</div>
+                                                        <small class="text-muted">Pure Uji Matcha</small>
+                                                    </td>
+                                                    <td><code class="text-primary">PWD-MTC-09</code></td>
+                                                    <td><span class="badge bg-light text-dark border">Powder</span></td>
+                                                    <td class="fw-bold">Rp 185.000</td>
+                                                    <td class="text-center">15</td>
+                                                    <td class="text-center"><span class="badge bg-success-subtle text-success">Active</span></td>
+                                                    <td class="text-center pe-3">
+                                                        <div class="btn-group">
+                                                            <button class="btn btn-sm btn-outline-secondary"><i class="bi bi-eye"></i></button>
+                                                            <button class="btn btn-sm btn-outline-primary"><i class="bi bi-pencil"></i></button>
+                                                            <button class="btn btn-sm btn-outline-danger"><i class="bi bi-trash"></i></button>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td class="ps-3 text-muted">10</td>
+                                                    <td><img src="https://via.placeholder.com/50" class="rounded border" alt="product"></td>
+                                                    <td>
+                                                        <div class="fw-bold text-dark">Tumbler Stainless 500ml</div>
+                                                        <small class="text-muted">Limited Edition Blue</small>
+                                                    </td>
+                                                    <td><code class="text-primary">MER-TMB-10</code></td>
+                                                    <td><span class="badge bg-light text-dark border">Merchandise</span></td>
+                                                    <td class="fw-bold">Rp 150.000</td>
+                                                    <td class="text-center">30</td>
+                                                    <td class="text-center"><span class="badge bg-success-subtle text-success">Active</span></td>
+                                                    <td class="text-center pe-3">
+                                                        <div class="btn-group">
+                                                            <button class="btn btn-sm btn-outline-secondary"><i class="bi bi-eye"></i></button>
+                                                            <button class="btn btn-sm btn-outline-primary"><i class="bi bi-pencil"></i></button>
+                                                            <button class="btn btn-sm btn-outline-danger"><i class="bi bi-trash"></i></button>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td class="ps-3 text-muted">11</td>
+                                                    <td><img src="https://via.placeholder.com/50" class="rounded border" alt="product"></td>
+                                                    <td>
+                                                        <div class="fw-bold text-dark">Cleaning Brush Kit</div>
+                                                        <small class="text-muted">Espresso Machine Tools</small>
+                                                    </td>
+                                                    <td><code class="text-primary">TLS-BRS-11</code></td>
+                                                    <td><span class="badge bg-light text-dark border">Tools</span></td>
+                                                    <td class="fw-bold">Rp 45.000</td>
+                                                    <td class="text-center">50</td>
+                                                    <td class="text-center"><span class="badge bg-success-subtle text-success">Active</span></td>
+                                                    <td class="text-center pe-3">
+                                                        <div class="btn-group">
+                                                            <button class="btn btn-sm btn-outline-secondary"><i class="bi bi-eye"></i></button>
+                                                            <button class="btn btn-sm btn-outline-primary"><i class="bi bi-pencil"></i></button>
+                                                            <button class="btn btn-sm btn-outline-danger"><i class="bi bi-trash"></i></button>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td class="ps-3 text-muted">12</td>
+                                                    <td><img src="https://via.placeholder.com/50" class="rounded border" alt="product"></td>
+                                                    <td>
+                                                        <div class="fw-bold text-dark">Caramel Sauce 2L</div>
+                                                        <small class="text-muted">Torani Professional</small>
+                                                    </td>
+                                                    <td><code class="text-primary">SYP-CRM-12</code></td>
+                                                    <td><span class="badge bg-light text-dark border">Syrup</span></td>
+                                                    <td class="fw-bold">Rp 210.000</td>
+                                                    <td class="text-center text-danger fw-bold">3</td>
+                                                    <td class="text-center"><span class="badge bg-warning-subtle text-warning">Low Stock</span></td>
+                                                    <td class="text-center pe-3">
+                                                        <div class="btn-group">
+                                                            <button class="btn btn-sm btn-outline-secondary"><i class="bi bi-eye"></i></button>
+                                                            <button class="btn btn-sm btn-outline-primary"><i class="bi bi-pencil"></i></button>
+                                                            <button class="btn btn-sm btn-outline-danger"><i class="bi bi-trash"></i></button>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td class="ps-3 text-muted">13</td>
+                                                    <td><img src="https://via.placeholder.com/50" class="rounded border" alt="product"></td>
+                                                    <td>
+                                                        <div class="fw-bold text-dark">Plastic Cup 12oz</div>
+                                                        <small class="text-muted">Bundle 50pcs</small>
+                                                    </td>
+                                                    <td><code class="text-primary">PCK-CUP-13</code></td>
+                                                    <td><span class="badge bg-light text-dark border">Packaging</span></td>
+                                                    <td class="fw-bold">Rp 35.000</td>
+                                                    <td class="text-center">500</td>
+                                                    <td class="text-center"><span class="badge bg-success-subtle text-success">Active</span></td>
+                                                    <td class="text-center pe-3">
+                                                        <div class="btn-group">
+                                                            <button class="btn btn-sm btn-outline-secondary"><i class="bi bi-eye"></i></button>
+                                                            <button class="btn btn-sm btn-outline-primary"><i class="bi bi-pencil"></i></button>
+                                                            <button class="btn btn-sm btn-outline-danger"><i class="bi bi-trash"></i></button>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td class="ps-3 text-muted">14</td>
+                                                    <td><img src="https://via.placeholder.com/50" class="rounded border" alt="product"></td>
+                                                    <td>
+                                                        <div class="fw-bold text-dark">Earl Grey Tea</div>
+                                                        <small class="text-muted">Twinings 25 Bags</small>
+                                                    </td>
+                                                    <td><code class="text-primary">TEA-EGY-14</code></td>
+                                                    <td><span class="badge bg-light text-dark border">Tea</span></td>
+                                                    <td class="fw-bold">Rp 58.000</td>
+                                                    <td class="text-center">42</td>
+                                                    <td class="text-center"><span class="badge bg-success-subtle text-success">Active</span></td>
+                                                    <td class="text-center pe-3">
+                                                        <div class="btn-group">
+                                                            <button class="btn btn-sm btn-outline-secondary"><i class="bi bi-eye"></i></button>
+                                                            <button class="btn btn-sm btn-outline-primary"><i class="bi bi-pencil"></i></button>
+                                                            <button class="btn btn-sm btn-outline-danger"><i class="bi bi-trash"></i></button>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td class="ps-3 text-muted">15</td>
+                                                    <td><img src="https://via.placeholder.com/50" class="rounded border" alt="product"></td>
+                                                    <td>
+                                                        <div class="fw-bold text-dark">Paper Bag Medium</div>
+                                                        <small class="text-muted">Eco-friendly brown</small>
+                                                    </td>
+                                                    <td><code class="text-primary">PCK-BAG-15</code></td>
+                                                    <td><span class="badge bg-light text-dark border">Packaging</span></td>
+                                                    <td class="fw-bold">Rp 1.500</td>
+                                                    <td class="text-center">1200</td>
+                                                    <td class="text-center"><span class="badge bg-success-subtle text-success">Active</span></td>
+                                                    <td class="text-center pe-3">
+                                                        <div class="btn-group">
+                                                            <button class="btn btn-sm btn-outline-secondary"><i class="bi bi-eye"></i></button>
+                                                            <button class="btn btn-sm btn-outline-primary"><i class="bi bi-pencil"></i></button>
+                                                            <button class="btn btn-sm btn-outline-danger"><i class="bi bi-trash"></i></button>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </main>
+    
+        </div>
+    </div>
+
+    
+    
+
+        
+        
+    
+
+
+    
+
+    
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+    <script>
+        // Sales Graphic
+        const ctx = document.getElementById('salesChart').getContext('2d');
+
+        // Membuat gradien warna untuk area bawah garis
+        const gradient = ctx.createLinearGradient(0, 0, 0, 300);
+        gradient.addColorStop(0, 'rgba(13, 110, 253, 0.2)');
+        gradient.addColorStop(1, 'rgba(13, 110, 253, 0)');
+
+        const salesChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+                datasets: [{
+                    label: 'Revenue',
+                    data: [3200000, 4500000, 3800000, 5200000, 4900000, 6800000, 7500000],
+                    borderColor: '#0d6efd',
+                    borderWidth: 3,
+                    backgroundColor: gradient,
+                    fill: true,
+                    tension: 0.4, // Membuat garis jadi melengkung (smooth)
+                    pointRadius: 4,
+                    pointBackgroundColor: '#fff',
+                    pointBorderColor: '#0d6efd',
+                    pointHoverRadius: 6
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false } // Sembunyikan label atas agar lebih bersih
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        grid: { drawBorder: false, color: '#f0f0f0' },
+                        ticks: {
+                            callback: function(value) {
+                                return 'Rp ' + value.toLocaleString();
+                            }
+                        }
+                    },
+                    x: {
+                        grid: { display: false }
+                    }
+                }
+            }
+        });
+    </script>
+
+
+
+
+
+
+    <!-- PIE CHART Product Sales by Categories -->
+    <script>
+        const ctxCategory = document.getElementById('categoryChart').getContext('2d');
+
+        const categoryChart = new Chart(ctxCategory, {
+            type: 'doughnut', // Bisa diganti 'pie' jika suka yang penuh
+            data: {
+                labels: ['Coffee Beans', 'Dairy/Milk', 'Syrup & Powder', 'Tools', 'Others'],
+                datasets: [{
+                    data: [45, 25, 15, 10, 5], // Persentase penjualan
+                    backgroundColor: [
+                        '#0d6efd', // Primary (Blue)
+                        '#198754', // Success (Green)
+                        '#0dcaf0', // Info (Cyan)
+                        '#ffc107', // Warning (Yellow)
+                        '#6c757d'  // Secondary (Grey)
+                    ],
+                    hoverOffset: 15, // Efek pop-out saat kursor diarahkan ke grafik
+                    borderWidth: 2,
+                    borderColor: '#ffffff'
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'bottom', // Letakkan keterangan di bawah
+                        labels: {
+                            usePointStyle: true,
+                            padding: 20
+                        }
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                return ` ${context.label}: ${context.raw}%`;
+                            }
+                        }
+                    }
+                },
+                cutout: '70%' // Mengatur besarnya lubang di tengah (khusus doughnut)
+            }
+        });
+    </script>
+</body>
+</html>
