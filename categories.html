@@ -70,11 +70,14 @@
         
             <main class="container-fluid flex-grow-1 py-4 h-100  overflow-y-auto">
                 <div class="container-fluid p-0">
-                    <div class="row g-2 d-flex flex-grow-0">
+                    <div class="row g-2 d-flex mb-3">
                         <div class="col-12 col-md-3">
                             <div class="row g-2">
+                                <div class="col-12 mb-2 border-bottom pb-3">
+                                    <p class="m-0"><a href="main.html">Home</a> / Categories</p>
+                                </div>
                                 <div class="col-6 col-md-12">
-                                    <div class="card">
+                                    <div class="card shadow-sm">
                                         <div class="text-light card-body bg-primary rounded">
                                             <label for="" class="form-label">Categories</label>
                                             <h5 class="m-0">11</h5>
@@ -82,7 +85,7 @@
                                     </div>
                                 </div>
                                 <div class="col-6 col-md-12">
-                                    <div class="card">
+                                    <div class="card shadow-sm">
                                         <div class="card-body bg-warning rouded">
                                             <label for="" class="form-label">Empty Categories</label>
                                             <h5 class="m-0">2</h5>
@@ -92,7 +95,7 @@
                             </div>
                         </div>
                         <div class="col-12 col-md-3 flex-grow-1">
-                            <div class="card h-100">
+                            <div class="card shadow-sm h-100">
                                 <div class="card-header">
                                     <h6 class="m-0">Most Popular Categories</h6>
                                 </div>
@@ -104,12 +107,220 @@
                             </div>
                         </div>
                         <div class="col-12 col-md-3 flex-grow-1">
-                            <div class="card h-100">
+                            <div class="card shadow-sm h-100">
                                 <div class="card-header">
                                     <h6 class="m-0">Reveue by Categories</h6>
                                 </div>
                                 <div class="card-body">
+                                    <div style="position: relative; height: 150px;">
+                                        <canvas id="revenueCategoryChart"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
+                    <div class="row g-2">
+                        <div class="col-12 col-md-5">
+                            <div class="card shadow-sm">
+                                <div class="card-header">
+                                    <h6 class="m-0">Add New Category</h6>
+                                </div>
+                                <div class="card-body">
+                                    <form action="">
+                                        <div class="mb-3">
+                                            <label for="name" class="form-label">Category Name</label>
+                                            <input type="text" class="form-control">
+                                        </div>
+                                        <div class="mb-0">
+                                            <label for="parent" class="form-label">Parent Category</label>
+                                            <input type="text" class="form-control">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="description" class="form-label">Description</label>
+                                            <textarea name="description" id="description" class="form-control"></textarea>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="card-footer d-flex">
+                                    <button class="btn btn-primary ms-auto">Save</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-7">
+                            <div class="card shadow-sm">
+                                <div class="card-header">
+                                    <h6 class="m-0">All Categories</h6>
+                                </div>
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                        <table class="table table-hover align-middle mb-0 text-nowrap">
+                                            <thead class="table-light">
+                                                <tr>
+                                                    <th class="ps-3" style="width: 60px;">No</th>
+                                                    <th>Category Name</th>
+                                                    <th class="text-center">Product Count</th>
+                                                    <th class="text-center pe-3">Actions</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td class="ps-3 text-muted">1</td>
+                                                    <td>
+                                                        <div class="d-flex align-items-center">
+                                                            <div class="bg-primary-subtle p-2 rounded me-3 text-primary">
+                                                                <i class="bi bi-cup-hot"></i>
+                                                            </div>
+                                                            <div>
+                                                                <div class="fw-bold text-dark">Coffee Beans</div>
+                                                                <small class="text-muted">Arabica, Robusta, & Blends</small>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td class="text-center">
+                                                        <span class="badge bg-info-subtle text-info px-3">45 Products</span>
+                                                    </td>
+                                                    <td class="text-center pe-3">
+                                                        <div class="dropdown">
+                                                            <button class="btn btn-light btn-sm border" data-bs-toggle="dropdown">
+                                                                <i class="bi bi-three-dots"></i>
+                                                            </button>
+                                                            <ul class="dropdown-menu dropdown-menu-end shadow-sm">
+                                                                <li><button class="dropdown-item" data-bs-toggle="modal" data-bs-target="#editCategory"><i class="bi bi-pencil me-2"></i>Edit</button></li>
+                                                                <li><a class="dropdown-item" href="#"><i class="bi bi-eye me-2"></i>View Products</a></li>
+                                                                <li><hr class="dropdown-divider"></li>
+                                                                <li><a class="dropdown-item text-danger" href="#"><i class="bi bi-trash me-2"></i>Delete</a></li>
+                                                            </ul>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                            
+                                                <tr>
+                                                    <td class="ps-3 text-muted">2</td>
+                                                    <td>
+                                                        <div class="d-flex align-items-center">
+                                                            <div class="bg-success-subtle p-2 rounded me-3 text-success">
+                                                                <i class="bi bi-moisture"></i>
+                                                            </div>
+                                                            <div>
+                                                                <div class="fw-bold text-dark">Dairy & Milk</div>
+                                                                <small class="text-muted">UHT, Fresh Milk, Oatmilk</small>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td class="text-center">
+                                                        <span class="badge bg-info-subtle text-info px-3">12 Products</span>
+                                                    </td>
+                                                    <td class="text-center pe-3">
+                                                        <div class="dropdown">
+                                                            <button class="btn btn-light btn-sm border" data-bs-toggle="dropdown">
+                                                                <i class="bi bi-three-dots"></i>
+                                                            </button>
+                                                            <ul class="dropdown-menu dropdown-menu-end shadow-sm">
+                                                                <li><button class="dropdown-item" data-bs-toggle="modal" data-bs-target="#editCategory"><i class="bi bi-pencil me-2"></i>Edit</button></li>
+                                                                <li><a class="dropdown-item" href="#"><i class="bi bi-eye me-2"></i>View Products</a></li>
+                                                                <li><hr class="dropdown-divider"></li>
+                                                                <li><a class="dropdown-item text-danger" href="#"><i class="bi bi-trash me-2"></i>Delete</a></li>
+                                                            </ul>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                            
+                                                <tr>
+                                                    <td class="ps-3 text-muted">3</td>
+                                                    <td>
+                                                        <div class="d-flex align-items-center">
+                                                            <div class="bg-warning-subtle p-2 rounded me-3 text-warning">
+                                                                <i class="bi bi-droplet-fill"></i>
+                                                            </div>
+                                                            <div>
+                                                                <div class="fw-bold text-dark">Syrup & Sauce</div>
+                                                                <small class="text-muted">Flavoring and toppings</small>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td class="text-center">
+                                                        <span class="badge bg-info-subtle text-info px-3">28 Products</span>
+                                                    </td>
+                                                    <td class="text-center pe-3">
+                                                        <div class="dropdown">
+                                                            <button class="btn btn-light btn-sm border" data-bs-toggle="dropdown">
+                                                                <i class="bi bi-three-dots"></i>
+                                                            </button>
+                                                            <ul class="dropdown-menu dropdown-menu-end shadow-sm">
+                                                                <li><button class="dropdown-item" data-bs-toggle="modal" data-bs-target="#editCategory"><i class="bi bi-pencil me-2"></i>Edit</button></li>
+                                                                <li><a class="dropdown-item" href="#"><i class="bi bi-eye me-2"></i>View Products</a></li>
+                                                                <li><hr class="dropdown-divider"></li>
+                                                                <li><a class="dropdown-item text-danger" href="#"><i class="bi bi-trash me-2"></i>Delete</a></li>
+                                                            </ul>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                            
+                                                <tr>
+                                                    <td class="ps-3 text-muted">4</td>
+                                                    <td>
+                                                        <div class="d-flex align-items-center">
+                                                            <div class="bg-danger-subtle p-2 rounded me-3 text-danger">
+                                                                <i class="bi bi-box-seam"></i>
+                                                            </div>
+                                                            <div>
+                                                                <div class="fw-bold text-dark">Packaging</div>
+                                                                <small class="text-muted">Cups, Straws, Paper Bags</small>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td class="text-center">
+                                                        <span class="badge bg-info-subtle text-info px-3">15 Products</span>
+                                                    </td>
+                                                    <td class="text-center pe-3">
+                                                        <div class="dropdown">
+                                                            <button class="btn btn-light btn-sm border" data-bs-toggle="dropdown">
+                                                                <i class="bi bi-three-dots"></i>
+                                                            </button>
+                                                            <ul class="dropdown-menu dropdown-menu-end shadow-sm">
+                                                                <li><button class="dropdown-item" data-bs-toggle="modal" data-bs-target="#editCategory"><i class="bi bi-pencil me-2"></i>Edit</button></li>
+                                                                <li><a class="dropdown-item" href="#"><i class="bi bi-eye me-2"></i>View Products</a></li>
+                                                                <li><hr class="dropdown-divider"></li>
+                                                                <li><a class="dropdown-item text-danger" href="#"><i class="bi bi-trash me-2"></i>Delete</a></li>
+                                                            </ul>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                            
+                                                <tr>
+                                                    <td class="ps-3 text-muted">5</td>
+                                                    <td>
+                                                        <div class="d-flex align-items-center">
+                                                            <div class="bg-secondary-subtle p-2 rounded me-3 text-secondary">
+                                                                <i class="bi bi-tools"></i>
+                                                            </div>
+                                                            <div>
+                                                                <div class="fw-bold text-dark">Equipment</div>
+                                                                <small class="text-muted">V60, Scale, Tamper</small>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td class="text-center">
+                                                        <span class="badge bg-info-subtle text-info px-3">20 Products</span>
+                                                    </td>
+                                                    <td class="text-center pe-3">
+                                                        <div class="dropdown">
+                                                            <button class="btn btn-light btn-sm border" data-bs-toggle="dropdown">
+                                                                <i class="bi bi-three-dots"></i>
+                                                            </button>
+                                                            <ul class="dropdown-menu dropdown-menu-end shadow-sm">
+                                                                <li><button class="dropdown-item" data-bs-toggle="modal" data-bs-target="#editCategory"><i class="bi bi-pencil me-2"></i>Edit</button></li>
+                                                                <li><a class="dropdown-item" href="#"><i class="bi bi-eye me-2"></i>View Products</a></li>
+                                                                <li><hr class="dropdown-divider"></li>
+                                                                <li><a class="dropdown-item text-danger" href="#"><i class="bi bi-trash me-2"></i>Delete</a></li>
+                                                            </ul>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -121,7 +332,40 @@
         </div>
     </div>
     
-    
+    <div class="modal fade" id="editCategory">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h6 class="m-0">Edit Category</h6>
+                    <button class="btn btn-close" data-bs-dismiss="modal" data-bs-target="#editCategory"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="">
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Category Name</label>
+                            <input type="text" class="form-control" value="Name Example">
+                        </div>
+                        <div class="mb-3">
+                            <label for="slug" class="form-label">slug</label>
+                            <input type="text" class="form-control" value="example-category">
+                        </div>
+                        <div class="mb-0">
+                            <label for="parent" class="form-label">Parent Category</label>
+                            <input type="text" class="form-control" value="-">
+                        </div>
+                        <div class="mb-3">
+                            <label for="description" class="form-label">Description</label>
+                            <textarea name="description" id="description" class="form-control">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Officiis minus voluptatum amet nulla impedit voluptatem animi sequi velit, id illo odit explicabo, quisquam quae qui neque expedita voluptate atque aspernatur.</textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer d-flex">
+                    <button class="btn btn-secondary" data-bs-dismiss="modal" data-bs-target="#editCategory">Cancel & Close</button>
+                    <button class="btn btn-primary">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
         
         
@@ -137,6 +381,7 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 
+    <!-- grafik popular categories  -->
     <script>
         // Pastikan library Chart.js sudah ter-load di project kamu
         const ctxPop = document.getElementById('popularCategoryChart').getContext('2d');
@@ -188,5 +433,69 @@
             }
         });
     </script>
+
+
+
+
+    <!-- grafik revenue by category -->
+     <script>
+        const ctxRev = document.getElementById('revenueCategoryChart').getContext('2d');
+
+        // Format Rupiah untuk Tooltip
+        const formatter = new Intl.NumberFormat('id-ID', {
+            style: 'currency',
+            currency: 'IDR',
+            minimumFractionDigits: 0
+        });
+
+        const revenueCategoryChart = new Chart(ctxRev, {
+            type: 'bar',
+            data: {
+                labels: ['Coffee Beans', 'Dairy Product', 'Syrup & Powder', 'Equipments', 'Snacks', 'Merchandise'],
+                datasets: [{
+                    label: 'Total Revenue',
+                    data: [45000000, 28000000, 15000000, 32000000, 8000000, 12000000],
+                    backgroundColor: [
+                        'rgba(13, 110, 253, 0.8)', // Primary
+                        'rgba(25, 135, 84, 0.8)',  // Success
+                        'rgba(13, 202, 240, 0.8)', // Info
+                        'rgba(255, 193, 7, 0.8)',  // Warning
+                        'rgba(220, 53, 69, 0.8)',  // Danger
+                        'rgba(108, 117, 125, 0.8)' // Secondary
+                    ],
+                    borderRadius: 5,
+                    barThickness: 20
+                }]
+            },
+            options: {
+                indexAxis: 'y', // Membuat Bar Chart jadi Horizontal
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false }, // Sembunyikan legend karena sudah ada label di axis
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                return ` Revenue: ${formatter.format(context.raw)}`;
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    x: {
+                        grid: { display: false },
+                        ticks: {
+                            callback: function(value) {
+                                return value / 1000000 + 'M'; // Mempersingkat angka jadi Juta (M)
+                            }
+                        }
+                    },
+                    y: {
+                        grid: { display: false }
+                    }
+                }
+            }
+        });
+     </script>
 </body>
 </html>
