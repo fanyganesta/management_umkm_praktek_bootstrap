@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MANAGEMENT UMKM</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+
+</head>
+<body>
+    <style>
+        .offcanvas-md{
+            --bs-offcanvas-width: 230px;
+            height: 100%;
+            overflow-y: auto;
+        }
+
+        @media(min-width: 760px){
+            .offcanvas-md{
+                position: static;
+                overflow-y: auto;
+                display: flex;
+                flex-direction: column;
+                overflow-x: hidden;
+            }
+        }
+    </style>
+
+
+    <!-- MAIN SAMA DENGAN INDEX -->
+    <div class="container-fluid d-flex flex-column p-0 vh-100">  
+        <div class="navbar navbar-expand-md bg-dark" data-bs-theme="dark">
+            <div class="container-fluid">
+                <div class="navbar-brand ms-2">Tokomu</div>
+                <div class="d-flex ms-auto">
+                    <button class="navbar-toggler" data-bs-target="#sidebar" data-bs-toggle="collapse" type="button">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="container-fluid p-0 d-flex flex-grow-1 overflow-hidden">
+            <div class="offcanvas-md" id="sidebar"> 
+                <div id="layout">
+                    <script>
+                        fetch('sidebar.html').then(response => response.text()).then(data => {document.getElementById('layout').innerHTML = data;
+                    
+
+                        const CurrentPage = window.location.pathname.split('/').pop() || 'index.html';
+                        const Links = document.querySelectorAll('.nav a');
+
+                        Links.forEach(link =>{
+                            if(CurrentPage == 'index.html'){
+                                document.querySelector('a[href^="main.html"]').classList.add('active');
+                            }else if(CurrentPage == link.getAttribute('href')){
+                                link.classList.add('active');
+                            }
+                        });
+
+                            }); 
+                    </script>
+                </div>
+            </div>
+        
+            <main class="container-fluid flex-grow-1 py-4 h-100  overflow-y-auto">
+                <div class="container-fluid p-0">
+                    <div class="row">
+                        <div class="col-12 d-flex justify-content-between align-items-center mb-3 border-bottom pb-2">
+                            <p class="m-0 text-muted">Home / <a href="products.html">Products</a> / Add New</p>
+                        </div>
+                        <div class="col-12">
+                            <div class="card shadow-sm">
+                                <div class="card-header">
+                                    <h6 class="m-0">Add New Product</h6>
+                                </div>
+                                <div class="card-body">
+                                    <form action="">
+                                        <div class="mb-3">
+                                            <label for="name" class="form-label">Product Name</label>
+                                            <input type="text" class="form-control" id="name">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="sku" class="form-label">SKU</label>
+                                            <input type="text" class="form-control" id="sku">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="category"class="form-label">Categories</label>
+                                            <input type="text"  id="category"  class="form-control">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="description" class="form-label">Description</label>
+                                            <textarea name="description" id="description" class="form-control"></textarea>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="price" class="form-label">Price</label>
+                                            <div class="input-group">
+                                                <span class="input-group-text">Rp.</span>
+                                                <input type="text" class="form-control" id="price">
+                                                <span class="input-group-text">,00</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-6 mb-3">
+                                                <label for="weight" class="form-label">Weight</label>
+                                                <div class="input-group">
+                                                    <span class="input-group-text">
+                                                        kg.
+                                                    </span>
+                                                    <input type="text" class="form-control" i="weight">
+                                                </div>
+                                            </div>
+                                            <div class="col-6 mb-3 d-flex flex-column justify-content-end">
+                                                <label for="Status" class="form-label">Status</label>
+                                                <button class="btn btn-ligth shadow-sm border-secondary">
+                                                    Draft
+                                                    <i class="bi bi-chevron-down"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <label for="Image" class="form-label">Proudct Images</label>
+                                                <div class="d-flex gap-2 flex-wrap">
+                                                    <div class="btn btn-light border-secondary d-flex justify-content-center align-items-center" style="width:50px; height:50px;">
+                                                        <i class="bi bi-plus"></i>
+                                                    </div>
+                                                    <div class="btn btn-light border-secondary d-flex justify-content-center align-items-center" style="width:50px; height:50px;">
+                                                        <i class="bi bi-plus"></i>
+                                                    </div>
+                                                    <div class="btn btn-light border-secondary d-flex justify-content-center align-items-center" style="width:50px; height:50px;">
+                                                        <i class="bi bi-plus"></i>
+                                                    </div>
+                                                    <div class="btn btn-light border-secondary d-flex justify-content-center align-items-center" style="width:50px; height:50px;">
+                                                        <i class="bi bi-plus"></i>
+                                                    </div>
+                                                    <div class="btn btn-light border-secondary d-flex justify-content-center align-items-center" style="width:50px; height:50px;">
+                                                        <i class="bi bi-plus"></i>
+                                                    </div>
+                                                    <div class="btn btn-light border-secondary d-flex justify-content-center align-items-center" style="width:50px; height:50px;">
+                                                        <i class="bi bi-plus"></i>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="card-footer d-flex justify-content-end">
+                                    <button class="btn btn-primary">Save Product</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+    
+        </div>
+    </div>
+
+    
+    
+
+        
+        
+    
+
+
+    
+
+    
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</body>
+</html>
