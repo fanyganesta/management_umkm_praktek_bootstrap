@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MANAGEMENT UMKM</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+
+</head>
+<body>
+    <style>
+        .offcanvas-md{
+            --bs-offcanvas-width: 230px;
+            height: 100%;
+            overflow-y: auto;
+        }
+
+        @media(min-width: 760px){
+            .offcanvas-md{
+                position: static;
+                overflow-y: auto;
+                display: flex;
+                flex-direction: column;
+                overflow-x: hidden;
+            }
+
+            .text-md-sm{
+                font-size: 0.75rem;
+            }
+        }
+    </style>
+
+
+    <!-- MAIN SAMA DENGAN INDEX -->
+    <div class="container-fluid d-flex flex-column p-0 vh-100">  
+        <div class="navbar navbar-expand-md bg-dark" data-bs-theme="dark">
+            <div class="container-fluid">
+                <div class="navbar-brand ms-2">Tokomu</div>
+                <div class="d-flex ms-auto">
+                    <button class="navbar-toggler" data-bs-target="#sidebar" data-bs-toggle="collapse" type="button">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="container-fluid p-0 d-flex flex-grow-1 overflow-hidden">
+            <div class="offcanvas-md" id="sidebar"> 
+                <div id="layout">
+                    <script>
+                        fetch('sidebar.html').then(response => response.text()).then(data => {document.getElementById('layout').innerHTML = data;
+                    
+
+                        const CurrentPage = window.location.pathname.split('/').pop() || 'index.html';
+                        const Links = document.querySelectorAll('.nav a');
+
+                        Links.forEach(link =>{
+                            if(CurrentPage == 'index.html'){
+                                document.querySelector('a[href^="main.html"]').classList.add('active');
+                            }else if(CurrentPage == link.getAttribute('href')){
+                                link.classList.add('active');
+                            }
+                        });
+
+                            }); 
+                    </script>
+                </div>
+            </div>
+        
+            <main class="container-fluid flex-grow-1 py-4 h-100  overflow-y-auto">
+                <div class="container-fluid p-0">
+                    <div class="row g-2 mb-3">
+                        <div class="col-6 col-md-3">
+                            <div class="card shadow-sm">
+                                <div class="card-body bg-primary rounded text-light">
+                                        <label for="" class="form-label">Completed</label>
+                                        <h5 class="m-0">302 orders</h5>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-3">
+                            <div class="card shadow-sm">
+                                <div class="card-body bg-success rounded text-light">
+                                    <label for="" class="form-label">On Delivery</label>
+                                    <h5 class="m-0">122 orders</h5>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-3">
+                            <div class="card shadow-sm">
+                                <div class="card-body bg-warning rounded">
+                                    <label for="" class="form-label">Processing</label>
+                                    <h5 class="m-0">87 orders</h5>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-3">
+                            <div class="card shadow-sm">
+                                <div class="card-body bg-danger-subtle rounded">
+                                    <label for="" class="form-label">Panding Payment</label>
+                                    <h5 class="m-0">20 orders</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-header d-flex justify-content-between align-items-center">
+                                    <h6 class="m-0">Orders</h6>
+                                    <form action="">
+                                        <div class="input-group">
+                                            <input type="text" class="form-control">
+                                            <button class="btn btn-primary">
+                                                <i class="bi bi-search"></i>
+                                            </button>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                        <table class="table table-hover align-middle mb-0 text-nowrap">
+                                            <thead class="table-light sticky-top">
+                                                <tr>
+                                                    <th class="ps-3">Order ID</th>
+                                                    <th>Customer Name</th>
+                                                    <th>Order Date</th>
+                                                    <th>Total Amount</th>
+                                                    <th>Shipping / Resi</th>
+                                                    <th>Status</th>
+                                                    <th class="text-center pe-3">Actions</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td class="ps-3 fw-bold text-primary">#ORD-2026-001</td>
+                                                    <td>Budi Santoso</td>
+                                                    <td>07 Mar 2026, 14:20</td>
+                                                    <td>Rp 450.000</td>
+                                                    <td>
+                                                        <div class="d-flex flex-column">
+                                                            <span class="badge bg-light text-dark border w-fit"><i class="bi bi-truck me-1"></i>JNE Reg</span>
+                                                            <small class="text-muted mt-1 cursor-pointer" title="Click to track">RESI: JNE991238812</small>
+                                                        </div>
+                                                    </td>
+                                                    <td><span class="badge rounded-pill bg-success-subtle text-success px-3">Shipped</span></td>
+                                                    <td class="text-center pe-3">
+                                                        <button class="btn btn-sm btn-light border" data-bs-toggle="offcanvas" data-bs-target="#orderDetailView">
+                                                            <i class="bi bi-eye"></i> Quick View
+                                                        </button>
+                                                    </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td class="ps-3 fw-bold text-primary">#ORD-2026-002</td>
+                                                    <td>Siti Aminah</td>
+                                                    <td>07 Mar 2026, 15:05</td>
+                                                    <td>Rp 125.000</td>
+                                                    <td>
+                                                        <span class="text-muted small">Awaiting Pickup</span>
+                                                    </td>
+                                                    <td><span class="badge rounded-pill bg-warning-subtle text-warning px-3">Processing</span></td>
+                                                    <td class="text-center pe-3">
+                                                        <button class="btn btn-sm btn-light border" data-bs-toggle="offcanvas" data-bs-target="#orderDetailView">
+                                                            <i class="bi bi-eye"></i> Quick View
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="ps-3 fw-bold text-primary">#ORD-2026-003</td>
+                                                    <td>Andi Wijaya</td>
+                                                    <td>07 Mar 2026, 15:30</td>
+                                                    <td>Rp 850.000</td>
+                                                    <td><span class="text-muted small">Waiting for Payment</span></td>
+                                                    <td><span class="badge rounded-pill bg-secondary-subtle text-secondary px-3">Pending Payment</span></td>
+                                                    <td class="text-center pe-3">
+                                                        <button class="btn btn-sm btn-light border" data-bs-toggle="offcanvas" data-bs-target="#orderDetailView">
+                                                            <i class="bi bi-eye"></i> Quick View
+                                                        </button>
+                                                    </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td class="ps-3 fw-bold text-primary">#ORD-2026-004</td>
+                                                    <td>Dewi Lestari</td>
+                                                    <td>07 Mar 2026, 12:10</td>
+                                                    <td>Rp 2.100.000</td>
+                                                    <td>
+                                                        <div class="d-flex flex-column">
+                                                            <span class="badge bg-light text-dark border w-fit"><i class="bi bi-truck me-1"></i>SiCepat Best</span>
+                                                            <small class="text-muted mt-1">RESI: 00293118221</small>
+                                                        </div>
+                                                    </td>
+                                                    <td><span class="badge rounded-pill bg-success-subtle text-success px-3">Shipped</span></td>
+                                                    <td class="text-center pe-3">
+                                                        <button class="btn btn-sm btn-light border" data-bs-toggle="offcanvas" data-bs-target="#orderDetailView">
+                                                            <i class="bi bi-eye"></i> Quick View
+                                                        </button>
+                                                    </td>
+                                                </tr>
+
+                                                <tr class="opacity-75 bg-light">
+                                                    <td class="ps-3 fw-bold text-danger">#ORD-2026-005</td>
+                                                    <td>Rian Hidayat</td>
+                                                    <td>07 Mar 2026, 11:45</td>
+                                                    <td>Rp 45.000</td>
+                                                    <td><span class="text-muted small">-</span></td>
+                                                    <td><span class="badge rounded-pill bg-danger-subtle text-danger px-3">Cancelled</span></td>
+                                                    <td class="text-center pe-3">
+                                                        <button class="btn btn-sm btn-light border" data-bs-toggle="offcanvas" data-bs-target="#orderDetailView">
+                                                            <i class="bi bi-eye"></i> Quick View
+                                                        </button>
+                                                    </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td class="ps-3 fw-bold text-primary">#ORD-2026-006</td>
+                                                    <td>Eka Putra</td>
+                                                    <td>06 Mar 2026, 20:00</td>
+                                                    <td>Rp 620.000</td>
+                                                    <td>
+                                                        <div class="d-flex flex-column">
+                                                            <span class="badge bg-light text-dark border w-fit"><i class="bi bi-truck me-1"></i>Grab Express</span>
+                                                            <small class="text-muted mt-1 text-success"><i class="bi bi-check-circle-fill"></i> Arrived</small>
+                                                        </div>
+                                                    </td>
+                                                    <td><span class="badge rounded-pill bg-info-subtle text-info px-3">Delivered</span></td>
+                                                    <td class="text-center pe-3">
+                                                        <button class="btn btn-sm btn-light border" data-bs-toggle="offcanvas" data-bs-target="#orderDetailView">
+                                                            <i class="bi bi-eye"></i> Quick View
+                                                        </button>
+                                                    </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td class="ps-3 fw-bold text-primary">#ORD-2026-007</td>
+                                                    <td>Linda Waty</td>
+                                                    <td>07 Mar 2026, 09:15</td>
+                                                    <td>Rp 1.450.000</td>
+                                                    <td><span class="text-muted small">Preparing Items</span></td>
+                                                    <td><span class="badge rounded-pill bg-warning-subtle text-warning px-3">Processing</span></td>
+                                                    <td class="text-center pe-3">
+                                                        <button class="btn btn-sm btn-light border" data-bs-toggle="offcanvas" data-bs-target="#orderDetailView">
+                                                            <i class="bi bi-eye"></i> Quick View
+                                                        </button>
+                                                    </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td class="ps-3 fw-bold text-primary">#ORD-2026-008</td>
+                                                    <td>Yusuf Mansur</td>
+                                                    <td>06 Mar 2026, 14:00</td>
+                                                    <td>Rp 300.000</td>
+                                                    <td><span class="text-muted small">Returned to Stock</span></td>
+                                                    <td><span class="badge rounded-pill bg-dark-subtle text-dark px-3">Refunded</span></td>
+                                                    <td class="text-center pe-3">
+                                                        <button class="btn btn-sm btn-light border" data-bs-toggle="offcanvas" data-bs-target="#orderDetailView">
+                                                            <i class="bi bi-eye"></i> Quick View
+                                                        </button>
+                                                    </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td class="ps-3 fw-bold text-primary">#ORD-2026-009</td>
+                                                    <td>Siska Kohl</td>
+                                                    <td>07 Mar 2026, 08:30</td>
+                                                    <td>Rp 15.000.000</td>
+                                                    <td>
+                                                        <div class="d-flex flex-column">
+                                                            <span class="badge bg-light text-dark border w-fit"><i class="bi bi-truck me-1"></i>Sentral Cargo</span>
+                                                            <small class="text-muted mt-1">RESI: SC-88219001</small>
+                                                        </div>
+                                                    </td>
+                                                    <td><span class="badge rounded-pill bg-success-subtle text-success px-3">Shipped</span></td>
+                                                    <td class="text-center pe-3">
+                                                        <button class="btn btn-sm btn-light border" data-bs-toggle="offcanvas" data-bs-target="#orderDetailView">
+                                                            <i class="bi bi-eye"></i> Quick View
+                                                        </button>
+                                                    </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td class="ps-3 fw-bold text-primary">#ORD-2026-010</td>
+                                                    <td>Rahmat Illahi</td>
+                                                    <td>07 Mar 2026, 16:15</td>
+                                                    <td>Rp 95.000</td>
+                                                    <td><span class="text-muted small">Virtual Account</span></td>
+                                                    <td><span class="badge rounded-pill bg-secondary-subtle text-secondary px-3">Pending Payment</span></td>
+                                                    <td class="text-center pe-3">
+                                                        <button class="btn btn-sm btn-light border" data-bs-toggle="offcanvas" data-bs-target="#orderDetailView">
+                                                            <i class="bi bi-eye"></i> Quick View
+                                                        </button>
+                                                    </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td class="ps-3 fw-bold text-primary">#ORD-2026-011</td>
+                                                    <td>Ani Sumarni</td>
+                                                    <td>07 Mar 2026, 14:50</td>
+                                                    <td>Rp 275.000</td>
+                                                    <td><span class="text-muted small">Packing</span></td>
+                                                    <td><span class="badge rounded-pill bg-warning-subtle text-warning px-3">Processing</span></td>
+                                                    <td class="text-center pe-3">
+                                                        <button class="btn btn-sm btn-light border" data-bs-toggle="offcanvas" data-bs-target="#orderDetailView">
+                                                            <i class="bi bi-eye"></i> Quick View
+                                                        </button>
+                                                    </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td class="ps-3 fw-bold text-primary">#ORD-2026-012</td>
+                                                    <td>Kevin Sanjaya</td>
+                                                    <td>07 Mar 2026, 10:00</td>
+                                                    <td>Rp 1.200.000</td>
+                                                    <td>
+                                                        <div class="d-flex flex-column">
+                                                            <span class="badge bg-light text-dark border w-fit"><i class="bi bi-truck me-1"></i>J&T Express</span>
+                                                            <small class="text-muted mt-1">RESI: JT20263310</small>
+                                                        </div>
+                                                    </td>
+                                                    <td><span class="badge rounded-pill bg-success-subtle text-success px-3">Shipped</span></td>
+                                                    <td class="text-center pe-3">
+                                                        <button class="btn btn-sm btn-light border" data-bs-toggle="offcanvas" data-bs-target="#orderDetailView">
+                                                            <i class="bi bi-eye"></i> Quick View
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </main>
+    
+        </div>
+    </div>
+        
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="orderDetailView" style="width: 400px;">
+        <div class="offcanvas-header border-bottom">
+            <h5 class="offcanvas-title fw-bold">Order Details #ORD-2026-001</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+        </div>
+        <div class="offcanvas-body">
+            <div class="mb-4">
+                <h6 class="fw-bold text-muted small text-uppercase">Customer Info</h6>
+                <p class="mb-1 fw-bold">Budi Santoso</p>
+                <p class="text-muted small mb-0">Jl. Sudirman No. 12, Jakarta Selatan</p>
+                <p class="text-muted small">0812-3456-7890</p>
+            </div>
+
+            <div class="mb-4">
+                <h6 class="fw-bold text-muted small text-uppercase">Items Purchased</h6>
+                <div class="d-flex justify-content-between border-bottom py-2">
+                    <span class="small">Arabika Toraja 250g (x2)</span>
+                    <span class="small fw-bold">Rp 300.000</span>
+                </div>
+                <div class="d-flex justify-content-between border-bottom py-2">
+                    <span class="small">Hario V60 Paper Filter (x1)</span>
+                    <span class="small fw-bold">Rp 150.000</span>
+                </div>
+                <div class="d-flex justify-content-between mt-3 px-2 py-2 bg-light rounded">
+                    <span class="fw-bold">Grand Total</span>
+                    <span class="fw-bold text-primary">Rp 450.000</span>
+                </div>
+            </div>
+
+            <div>
+                <h6 class="fw-bold text-muted small text-uppercase">Shipping Progress</h6>
+                <div class="position-relative ps-4 py-2 border-start ms-2">
+                    <div class="position-absolute translate-middle-x bg-success" style="width:10px; height:10px; border-radius:50%; left:0; top:15px;"></div>
+                    <p class="small mb-0 fw-bold">Package Shipped via JNE</p>
+                    <small class="text-muted">07 Mar 2026, 16:00</small>
+                </div>
+                <div class="position-relative ps-4 py-2 border-start ms-2">
+                    <div class="position-absolute translate-middle-x bg-warning" style="width:10px; height:10px; border-radius:50%; left:0; top:15px;"></div>
+                    <p class="small mb-0 fw-bold">Payment Verified</p>
+                    <small class="text-muted">07 Mar 2026, 14:30</small>
+                </div>
+            </div>
+        </div>
+        <div class="offcanvas-footer p-3 border-top">
+            <button class="btn btn-primary w-100">Print Invoice</button>
+        </div>
+    </div>
+        
+    
+
+
+    
+
+    
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</body>
+</html>

@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MANAGEMENT UMKM</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+
+</head>
+<body>
+    <style>
+        .offcanvas-md{
+            --bs-offcanvas-width: 230px;
+            height: 100%;
+            overflow-y: auto;
+        }
+
+        @media(min-width: 760px){
+            .offcanvas-md{
+                position: static;
+                overflow-y: auto;
+                display: flex;
+                flex-direction: column;
+                overflow-x: hidden;
+            }
+
+            .text-md-sm{
+                font-size: 0.75rem;
+            }
+        }
+    </style>
+
+
+    <!-- MAIN SAMA DENGAN INDEX -->
+    <div class="container-fluid d-flex flex-column p-0 vh-100">  
+        <div class="navbar navbar-expand-md bg-dark" data-bs-theme="dark">
+            <div class="container-fluid">
+                <div class="navbar-brand ms-2">Tokomu</div>
+                <div class="d-flex ms-auto">
+                    <button class="navbar-toggler" data-bs-target="#sidebar" data-bs-toggle="collapse" type="button">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="container-fluid p-0 d-flex flex-grow-1 overflow-hidden">
+            <div class="offcanvas-md" id="sidebar"> 
+                <div id="layout">
+                    <script>
+                        fetch('sidebar.html').then(response => response.text()).then(data => {document.getElementById('layout').innerHTML = data;
+                    
+
+                        const CurrentPage = window.location.pathname.split('/').pop() || 'index.html';
+                        const Links = document.querySelectorAll('.nav a');
+
+                        Links.forEach(link =>{
+                            if(CurrentPage == 'index.html'){
+                                document.querySelector('a[href^="main.html"]').classList.add('active');
+                            }else if(CurrentPage == link.getAttribute('href')){
+                                link.classList.add('active');
+                            }
+                        });
+
+                            }); 
+                    </script>
+                </div>
+            </div>
+        
+            <main class="container-fluid flex-grow-1 py-4 h-100  overflow-y-auto">
+                <div class="container-fluid p-0">
+                    <div class="row">
+                        <div class="col-12 pb-2 border-bottom mb-3">
+                            <p class="m-0"><a href="main.html">Home</a> / Category</p>
+                        </div>
+                    </div>
+
+                    <div class="row g-2 mb-3">
+                        <div class="col-6 col-md-3">
+                            <div class="card">
+                                <div class="text-light card-body bg-primary rounded">
+                                    <label for="" class="form-label">Stock Value</label>
+                                    <h5 class="m-0">Rp. 87,34 Jt</h5>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-6 col-md-3">
+                            <div class="card">
+                                <div class="card-body bg-warning rounded">
+                                    <label for="" class="form-label">Low Stock</label>
+
+                                    <h5 class="m-0">
+                                        10 Product
+                                    </h5>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-6 col-md-3">
+                            <div class="card">
+                                <div class="card-body bg-danger rounded text-light">
+                                    <label for="" class="form-label">Out of Stock</label>
+                                    <h5 class="m-0">
+                                        12 Product
+                                    </h5>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-6 col-md-3">
+                            <div class="card">
+                                <div class="card-body bg-success-subtle rounded">
+                                    <label for="" class="form-label">
+                                        Stock In/Out
+                                    </label>
+                                    <h5 class="m-0">
+                                        20/43
+                                    </h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row g-2">
+                        <div class="col-12 col-md-4 order-md-2">
+                            <div class="card h-100">
+                                <div class="card-header">
+                                    <h6 class="m-0">
+                                        Restock Alert
+                                    </h6>
+                                </div>
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                        <table class="table table-hover align-middle mb-0 text-nowrap">
+                                            <thead class="table-light">
+                                                <tr>
+                                                    <th class="ps-3" style="width: 50px;">No</th>
+                                                    <th>Product Details</th>
+                                                    <th class="text-center">Min. Stock</th>
+                                                    <th class="text-center">Current Stock</th>
+                                                    <th class="text-center">Suggested Order</th>
+                                                    <th class="text-center">Priority</th>
+                                                    <th class="text-center pe-3">Action</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr class="table-danger-subtle">
+                                                    <td class="ps-3">1</td>
+                                                    <td>
+                                                        <div class="fw-bold text-dark">Susu UHT Full Cream 1L</div>
+                                                        <code>DRY-UHT-02</code>
+                                                    </td>
+                                                    <td class="text-center">15 Box</td>
+                                                    <td class="text-center fw-bold text-danger">3 Box</td>
+                                                    <td class="text-center"><span class="badge bg-dark">+20 Box</span></td>
+                                                    <td class="text-center">
+                                                        <span class="badge rounded-pill bg-danger">Critical</span>
+                                                    </td>
+                                                    <td class="text-center pe-3">
+                                                        <a href="products.html" class="btn btn-danger btn-sm px-3">Restock Now</a>
+                                                    </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td class="ps-3 text-muted">2</td>
+                                                    <td>
+                                                        <div class="fw-bold text-dark">Sirup Vanilla 750ml</div>
+                                                        <code>SYP-VAN-03</code>
+                                                    </td>
+                                                    <td class="text-center">10 Btl</td>
+                                                    <td class="text-center fw-bold text-warning">8 Btl</td>
+                                                    <td class="text-center"><span class="badge bg-secondary">+12 Btl</span></td>
+                                                    <td class="text-center">
+                                                        <span class="badge rounded-pill bg-warning text-dark">Low Stock</span>
+                                                    </td>
+                                                    <td class="text-center pe-3">
+                                                        <a href="products.html" class="btn btn-outline-primary btn-sm px-3">Order</a href="products.html">s
+                                                    </td>
+                                                </tr>
+
+                                                <tr class="table-danger-subtle">
+                                                    <td class="ps-3">3</td>
+                                                    <td>
+                                                        <div class="fw-bold text-dark">Paper Filter V60 02</div>
+                                                        <code>TLS-PPR-04</code>
+                                                    </td>
+                                                    <td class="text-center">50 Pkt</td>
+                                                    <td class="text-center fw-bold text-danger">0 Pkt</td>
+                                                    <td class="text-center"><span class="badge bg-dark">+100 Pkt</span></td>
+                                                    <td class="text-center">
+                                                        <span class="badge rounded-pill bg-dark">Out of Stock</span>
+                                                    </td>
+                                                    <td class="text-center pe-3">
+                                                        <a href="products.html" class="btn btn-danger btn-sm px-3">Restock Now</a>
+                                                    </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td class="ps-3 text-muted">4</td>
+                                                    <td>
+                                                        <div class="fw-bold text-dark">Gula Aren Cair 1L</div>
+                                                        <code>SWT-ARE-05</code>
+                                                    </td>
+                                                    <td class="text-center">20 Btl</td>
+                                                    <td class="text-center fw-bold text-warning">15 Btl</td>
+                                                    <td class="text-center"><span class="badge bg-secondary">+15 Btl</span></td>
+                                                    <td class="text-center">
+                                                        <span class="badge rounded-pill bg-warning text-dark">Low Stock</span>
+                                                    </td>
+                                                    <td class="text-center pe-3">
+                                                        <a href="products.html" class="btn btn-outline-primary btn-sm px-3">Order</a href="products.html">
+                                                    </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td class="ps-3 text-muted">5</td>
+                                                    <td>
+                                                        <div class="fw-bold text-dark">Oat Milk Barista 1L</div>
+                                                        <code>DRY-OAT-07</code>
+                                                    </td>
+                                                    <td class="text-center">20 Box</td>
+                                                    <td class="text-center fw-bold text-warning">18 Box</td>
+                                                    <td class="text-center"><span class="badge bg-secondary">+10 Box</span></td>
+                                                    <td class="text-center">
+                                                        <span class="badge rounded-pill bg-warning text-dark">Low Stock</span>
+                                                    </td>
+                                                    <td class="text-center pe-3">
+                                                        <a href="products.html" class="btn btn-outline-primary btn-sm px-3">Order</a href="products.html">
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-8 order-md-1">
+                            <div class="card overflow-y-auto">
+                                <div class="card-header d-flex justify-content-between align-items-center">
+                                    <h6 class="m-0">Inventory</h6>
+                                    <form action="">
+                                        <div class="input-group">
+                                                <input type="text" class="form-control">
+                                                <button class="btn btn-primary">
+                                                    <i class="bi bi-search"></i>
+                                                </button>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="card-body">
+                                    <div class="table-responsive"  style="max-height: 600px">
+                                        <table class="table table-hover align-middle mb-0 text-nowrap">
+                                            <thead class="table-light sticky-top  z-3 shadow-sm">
+                                                <tr>
+                                                    <th class="ps-3">Item Details</th>
+                                                    <th>Warehouse Location</th>
+                                                    <th class="text-center">On Hand</th>
+                                                    <th class="text-center">Committed</th>
+                                                    <th class="text-center">Available</th>
+                                                    <th class="text-center">Stock Value</th>
+                                                    <th class="text-center pe-3">Action</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td class="ps-3">
+                                                        <div class="fw-bold text-dark">Kopi Arabika Toraja 250g</div>
+                                                        <small class="text-muted">SKU: COF-TRJ-01</small>
+                                                        </td>
+                                                        <td><span class="badge bg-light text-dark border"><i class="bi bi-geo-alt me-1"></i>Row A - Shelf 2</span></td>
+                                                        <td class="text-center fw-bold">120</td>
+                                                        <td class="text-center text-warning">15</td>
+                                                        <td class="text-center text-success fw-bold">105</td>
+                                                        <td class="text-center">Rp 10.200.000</td>
+                                                        <td class="text-center pe-3">
+                                                            <button class="btn btn-sm btn-outline-primary" title="History" data-bs-target="#history" data-bs-toggle="modal"><i class="bi bi-clock-history"></i></button>
+                                                            <a href="products.html" class="btn btn-sm btn-outline-dark" title="Transfer"><i class="bi bi-truck"></i></a>
+                                                        </td>
+                                                    </tr>
+
+                                                    <tr>
+                                                        <td class="ps-3">
+                                                            <div class="fw-bold text-dark">Oatside Oat Milk 1L</div>
+                                                            <small class="text-muted">SKU: DRY-OAT-07</small>
+                                                        </td>
+                                                        <td><span class="badge bg-light text-dark border"><i class="bi bi-geo-alt me-1"></i>Chiller B - 01</span></td>
+                                                        <td class="text-center fw-bold">48</td>
+                                                        <td class="text-center text-warning">8</td>
+                                                        <td class="text-center text-success fw-bold">40</td>
+                                                        <td class="text-center">Rp 2.016.000</td>
+                                                        <td class="text-center pe-3">
+                                                            <button class="btn btn-sm btn-outline-primary" title="History" data-bs-target="#history" data-bs-toggle="modal"><i class="bi bi-clock-history"></i></button>
+                                                            <a href="products.html" class="btn btn-sm btn-outline-dark" title="Transfer"><i class="bi bi-truck"></i></a>
+                                                        </td>
+                                                    </tr>
+
+                                                    <tr>
+                                                        <td class="ps-3">
+                                                            <div class="fw-bold text-dark">Monin Vanilla Syrup</div>
+                                                            <small class="text-muted">SKU: SYP-VAN-03</small>
+                                                        </td>
+                                                        <td><span class="badge bg-light text-dark border"><i class="bi bi-geo-alt me-1"></i>Row C - Shelf 1</span></td>
+                                                        <td class="text-center fw-bold">12</td>
+                                                        <td class="text-center text-warning">2</td>
+                                                        <td class="text-center text-danger fw-bold">10</td>
+                                                        <td class="text-center">Rp 1.740.000</td>
+                                                        <td class="text-center pe-3">
+                                                            <button class="btn btn-sm btn-outline-primary" title="History" data-bs-target="#history" data-bs-toggle="modal"><i class="bi bi-clock-history"></i></button>
+                                                            <a href="products.html" class="btn btn-sm btn-outline-dark" title="Transfer"><i class="bi bi-truck"></i></a>
+                                                        </td>
+                                                    </tr>
+
+                                                    <tr>
+                                                        <td class="ps-3">
+                                                            <div class="fw-bold text-dark">Paper Cup 12oz (Pack)</div>
+                                                            <small class="text-muted">SKU: PCK-CUP-13</small>
+                                                        </td>
+                                                        <td><span class="badge bg-light text-dark border"><i class="bi bi-geo-alt me-1"></i>Bulk Area - 04</span></td>
+                                                        <td class="text-center fw-bold">500</td>
+                                                        <td class="text-center text-warning">120</td>
+                                                        <td class="text-center text-success fw-bold">380</td>
+                                                        <td class="text-center">Rp 17.500.000</td>
+                                                        <td class="text-center pe-3">
+                                                            <button class="btn btn-sm btn-outline-primary" title="History" data-bs-target="#history" data-bs-toggle="modal"><i class="bi bi-clock-history"></i></button>
+                                                            <a href="products.html" class="btn btn-sm btn-outline-dark" title="Transfer"><i class="bi bi-truck"></i></a>
+                                                        </td>
+                                                    </tr>
+
+                                                    <tr>
+                                                        <td class="ps-3">
+                                                            <div class="fw-bold text-dark">Espresso Machine Cleaner</div>
+                                                            <small class="text-muted">SKU: TLS-BRS-11</small>
+                                                        </td>
+                                                        <td><span class="badge bg-light text-dark border"><i class="bi bi-geo-alt me-1"></i>Tools Rack - 3</span></td>
+                                                        <td class="text-center fw-bold text-danger">3</td>
+                                                        <td class="text-center text-warning">0</td>
+                                                        <td class="text-center text-danger fw-bold">3</td>
+                                                        <td class="text-center">Rp 135.000</td>
+                                                        <td class="text-center pe-3">
+                                                            <button class="btn btn-sm btn-outline-primary" title="History" data-bs-target="#history" data-bs-toggle="modal"><i class="bi bi-clock-history"></i></button>
+                                                            <a href="products.html" class="btn btn-sm btn-outline-dark" title="Transfer"><i class="bi bi-truck"></i></a>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                    <td class="ps-3">
+                                                        <div class="fw-bold text-dark">Kopi Robusta Lampung 500g</div>
+                                                        <small class="text-muted">SKU: COF-LMP-08</small>
+                                                    </td>
+                                                    <td><span class="badge bg-light text-dark border"><i class="bi bi-geo-alt me-1"></i>Row A - Shelf 5</span></td>
+                                                    <td class="text-center fw-bold">85</td>
+                                                    <td class="text-center text-warning">10</td>
+                                                    <td class="text-center text-success fw-bold">75</td>
+                                                    <td class="text-center">Rp 5.525.000</td>
+                                                    <td class="text-center pe-3">
+                                                        <button class="btn btn-sm btn-outline-primary" title="History" data-bs-target="#history" data-bs-toggle="modal"><i class="bi bi-clock-history"></i></button>
+                                                        <a href="products.html" class="btn btn-sm btn-outline-dark" title="Transfer"><i class="bi bi-truck"></i></a>
+                                                    </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td class="ps-3">
+                                                        <div class="fw-bold text-dark">Gula Aren Cair 1L</div>
+                                                        <small class="text-muted">SKU: SWT-ARE-05</small>
+                                                    </td>
+                                                    <td><span class="badge bg-light text-dark border"><i class="bi bi-geo-alt me-1"></i>Row C - Shelf 3</span></td>
+                                                    <td class="text-center fw-bold text-danger">5</td>
+                                                    <td class="text-center text-warning">2</td>
+                                                    <td class="text-center text-danger fw-bold">3</td>
+                                                    <td class="text-center">Rp 275.000</td>
+                                                    <td class="text-center pe-3">
+                                                        <button class="btn btn-sm btn-outline-primary" title="History" data-bs-target="#history" data-bs-toggle="modal"><i class="bi bi-clock-history"></i></button>
+                                                        <a href="products.html" class="btn btn-sm btn-outline-dark" title="Transfer"><i class="bi bi-truck"></i></a>
+                                                    </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td class="ps-3">
+                                                        <div class="fw-bold text-dark">Hario V60 Paper Filter 02</div>
+                                                        <small class="text-muted">SKU: TLS-PPR-04</small>
+                                                    </td>
+                                                    <td><span class="badge bg-light text-dark border"><i class="bi bi-geo-alt me-1"></i>Tools Rack - 1</span></td>
+                                                    <td class="text-center fw-bold">210</td>
+                                                    <td class="text-center text-warning">45</td>
+                                                    <td class="text-center text-success fw-bold">165</td>
+                                                    <td class="text-center">Rp 13.650.000</td>
+                                                    <td class="text-center pe-3">
+                                                        <button class="btn btn-sm btn-outline-primary" title="History" data-bs-target="#history" data-bs-toggle="modal"><i class="bi bi-clock-history"></i></button>
+                                                        <a href="products.html" class="btn btn-sm btn-outline-dark" title="Transfer"><i class="bi bi-truck"></i></a>
+                                                    </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td class="ps-3">
+                                                        <div class="fw-bold text-dark">Matcha Powder Uji 500g</div>
+                                                        <small class="text-muted">SKU: PWD-MTC-09</small>
+                                                    </td>
+                                                    <td><span class="badge bg-light text-dark border"><i class="bi bi-geo-alt me-1"></i>Row C - Shelf 4</span></td>
+                                                    <td class="text-center fw-bold">18</td>
+                                                    <td class="text-center text-warning">3</td>
+                                                    <td class="text-center text-success fw-bold">15</td>
+                                                    <td class="text-center">Rp 3.330.000</td>
+                                                    <td class="text-center pe-3">
+                                                        <button class="btn btn-sm btn-outline-primary" title="History" data-bs-target="#history" data-bs-toggle="modal"><i class="bi bi-clock-history"></i></button>
+                                                        <a href="products.html" class="btn btn-sm btn-outline-dark" title="Transfer"><i class="bi bi-truck"></i></a>
+                                                    </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td class="ps-3">
+                                                        <div class="fw-bold text-dark">Plastic Straw Steril (Pack)</div>
+                                                        <small class="text-muted">SKU: PCK-STR-14</small>
+                                                    </td>
+                                                    <td><span class="badge bg-light text-dark border"><i class="bi bi-geo-alt me-1"></i>Bulk Area - 02</span></td>
+                                                    <td class="text-center fw-bold">150</td>
+                                                    <td class="text-center text-warning">20</td>
+                                                    <td class="text-center text-success fw-bold">130</td>
+                                                    <td class="text-center">Rp 2.250.000</td>
+                                                    <td class="text-center pe-3">
+                                                        <button class="btn btn-sm btn-outline-primary" title="History" data-bs-target="#history" data-bs-toggle="modal"><i class="bi bi-clock-history"></i></button>
+                                                        <a href="products.html" class="btn btn-sm btn-outline-dark" title="Transfer"><i class="bi bi-truck"></i></a>
+                                                    </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td class="ps-3">
+                                                        <div class="fw-bold text-dark">Caramel Sauce 2L</div>
+                                                        <small class="text-muted">SKU: SYP-CRM-12</small>
+                                                    </td>
+                                                    <td><span class="badge bg-light text-dark border"><i class="bi bi-geo-alt me-1"></i>Row C - Shelf 2</span></td>
+                                                    <td class="text-center fw-bold text-danger">2</td>
+                                                    <td class="text-center text-warning">1</td>
+                                                    <td class="text-center text-danger fw-bold">1</td>
+                                                    <td class="text-center">Rp 420.000</td>
+                                                    <td class="text-center pe-3">
+                                                        <button class="btn btn-sm btn-outline-primary" title="History" data-bs-target="#history" data-bs-toggle="modal"><i class="bi bi-clock-history"></i></button>
+                                                        <a href="products.html" class="btn btn-sm btn-outline-dark" title="Transfer"><i class="bi bi-truck"></i></a>
+                                                    </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td class="ps-3">
+                                                        <div class="fw-bold text-dark">Cleaning Tablet Espresso</div>
+                                                        <small class="text-muted">SKU: TLS-CLN-15</small>
+                                                    </td>
+                                                    <td><span class="badge bg-light text-dark border"><i class="bi bi-geo-alt me-1"></i>Tools Rack - 4</span></td>
+                                                    <td class="text-center fw-bold text-danger">0</td>
+                                                    <td class="text-center text-warning">0</td>
+                                                    <td class="text-center text-danger fw-bold">0</td>
+                                                    <td class="text-center">Rp 0</td>
+                                                    <td class="text-center pe-3">
+                                                        <button class="btn btn-sm btn-outline-primary" title="History" data-bs-target="#history" data-bs-toggle="modal"><i class="bi bi-clock-history"></i></button>
+                                                        <a href="products.html" class="btn btn-sm btn-outline-dark" title="Transfer"><i class="bi bi-truck"></i></a>
+                                                    </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td class="ps-3">
+                                                        <div class="fw-bold text-dark">Earl Grey Tea Bags (25s)</div>
+                                                        <small class="text-muted">SKU: TEA-EGY-14</small>
+                                                    </td>
+                                                    <td><span class="badge bg-light text-dark border"><i class="bi bi-geo-alt me-1"></i>Row D - Shelf 1</span></td>
+                                                    <td class="text-center fw-bold">42</td>
+                                                    <td class="text-center text-warning">5</td>
+                                                    <td class="text-center text-success fw-bold">37</td>
+                                                    <td class="text-center">Rp 2.436.000</td>
+                                                    <td class="text-center pe-3">
+                                                        <button class="btn btn-sm btn-outline-primary" title="History" data-bs-target="#history" data-bs-toggle="modal"><i class="bi bi-clock-history"></i></button>
+                                                        <a href="products.html" class="btn btn-sm btn-outline-dark" title="Transfer"><i class="bi bi-truck"></i></a>
+                                                    </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td class="ps-3">
+                                                        <div class="fw-bold text-dark">Chocolate Powder 1kg</div>
+                                                        <small class="text-muted">SKU: PWD-CHO-16</small>
+                                                    </td>
+                                                    <td><span class="badge bg-light text-dark border"><i class="bi bi-geo-alt me-1"></i>Row C - Shelf 5</span></td>
+                                                    <td class="text-center fw-bold">60</td>
+                                                    <td class="text-center text-warning">12</td>
+                                                    <td class="text-center text-success fw-bold">48</td>
+                                                    <td class="text-center">Rp 7.200.000</td>
+                                                    <td class="text-center pe-3">
+                                                        <button class="btn btn-sm btn-outline-primary" title="History" data-bs-target="#history" data-bs-toggle="modal"><i class="bi bi-clock-history"></i></button>
+                                                        <a href="products.html" class="btn btn-sm btn-outline-dark" title="Transfer"><i class="bi bi-truck"></i></a>
+                                                    </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td class="ps-3">
+                                                        <div class="fw-bold text-dark">Digital Coffee Scale</div>
+                                                        <small class="text-muted">SKU: TLS-SCL-17</small>
+                                                    </td>
+                                                    <td><span class="badge bg-light text-dark border"><i class="bi bi-geo-alt me-1"></i>Tools Rack - 2</span></td>
+                                                    <td class="text-center fw-bold">15</td>
+                                                    <td class="text-center text-warning">2</td>
+                                                    <td class="text-center text-success fw-bold">13</td>
+                                                    <td class="text-center">Rp 5.250.000</td>
+                                                    <td class="text-center pe-3">
+                                                        <button class="btn btn-sm btn-outline-primary" title="History" data-bs-target="#history" data-bs-toggle="modal"><i class="bi bi-clock-history"></i></button>
+                                                        <a href="products.html" class="btn btn-sm btn-outline-dark" title="Transfer"><i class="bi bi-truck"></i></a>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </main>
+    
+        </div>
+    </div>
+
+    <div class="modal fade" id="history">
+        <div class="modal-dialog modal-dialog-centered modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h6 class="m-0">History</h6>
+                    <button class="btn btn-close" data-bs-target="#history" data-bs-dismiss="modal">
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="table-responsive" style="max-height: 500px;">
+                        <table class="table table-hover align-middle mb-0 text-nowrap">
+                            <thead class="table-light sticky-top" style="top: 0; z-index: 10;">
+                                <tr>
+                                    <th class="ps-3">Timestamp</th>
+                                    <th>Product / SKU</th>
+                                    <th>Type</th>
+                                    <th class="text-center">Qty Change</th>
+                                    <th class="text-center">Final Stock</th>
+                                    <th>User / Admin</th>
+                                    <th class="pe-3">Notes</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="ps-3 text-muted">07 Mar 2026, 10:15</td>
+                                    <td>
+                                        <div class="fw-bold">Arabika Toraja</div>
+                                        <small class="text-muted">COF-TRJ-01</small>
+                                    </td>
+                                    <td><span class="badge bg-success-subtle text-success">Restock</span></td>
+                                    <td class="text-center fw-bold text-success">+50</td>
+                                    <td class="text-center fw-bold text-dark">120</td>
+                                    <td>Admin_Andi</td>
+                                    <td class="pe-3 text-muted">Purchase Order #PO-992</td>
+                                </tr>
+
+                                <tr>
+                                    <td class="ps-3 text-muted">07 Mar 2026, 09:30</td>
+                                    <td>
+                                        <div class="fw-bold">Oatside Oat Milk</div>
+                                        <small class="text-muted">DRY-OAT-07</small>
+                                    </td>
+                                    <td><span class="badge bg-info-subtle text-info">Sales</span></td>
+                                    <td class="text-center fw-bold text-danger">-2</td>
+                                    <td class="text-center fw-bold text-dark">48</td>
+                                    <td>POS_System</td>
+                                    <td class="pe-3 text-muted">Invoice #INV-20260307-001</td>
+                                </tr>
+
+                                <tr>
+                                    <td class="ps-3 text-muted">06 Mar 2026, 16:45</td>
+                                    <td>
+                                        <div class="fw-bold">Vanilla Syrup</div>
+                                        <small class="text-muted">SYP-VAN-03</small>
+                                    </td>
+                                    <td><span class="badge bg-danger-subtle text-danger">Adjustment</span></td>
+                                    <td class="text-center fw-bold text-danger">-1</td>
+                                    <td class="text-center fw-bold text-dark">12</td>
+                                    <td>Super_Admin</td>
+                                    <td class="pe-3 text-muted">Bottle Broken (Spoilage)</td>
+                                </tr>
+
+                                <tr>
+                                    <td class="ps-3 text-muted">06 Mar 2026, 14:20</td>
+                                    <td>
+                                        <div class="fw-bold">Paper Cup 12oz</div>
+                                        <small class="text-muted">PCK-CUP-13</small>
+                                    </td>
+                                    <td><span class="badge bg-warning-subtle text-warning">Return</span></td>
+                                    <td class="text-center fw-bold text-success">+10</td>
+                                    <td class="text-center fw-bold text-dark">500</td>
+                                    <td>Admin_Sari</td>
+                                    <td class="pe-3 text-muted">Cancelled Order #INV-20260306-05</td>
+                                </tr>
+
+                                <tr>
+                                    <td class="ps-3 text-muted">06 Mar 2026, 11:00</td>
+                                    <td>
+                                        <div class="fw-bold">Arabika Toraja</div>
+                                        <small class="text-muted">COF-TRJ-01</small>
+                                    </td>
+                                    <td><span class="badge bg-info-subtle text-info">Sales</span></td>
+                                    <td class="text-center fw-bold text-danger">-5</td>
+                                    <td class="text-center fw-bold text-dark">70</td>
+                                    <td>POS_System</td>
+                                    <td class="pe-3 text-muted">Invoice #INV-20260306-012</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="modal-footer d-flex justify-content-end">
+                    <button class="btn btn-secondary" data-bs-dismiss="modal" data-bs-target="#history">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+        
+        
+    
+
+
+    
+
+    
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</body>
+</html>
