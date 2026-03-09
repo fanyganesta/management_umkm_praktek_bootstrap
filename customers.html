@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MANAGEMENT UMKM</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/themes/material_blue.css">
+
+</head>
+<body>
+    <style>
+        .offcanvas-md{
+            --bs-offcanvas-width: 230px;
+            height: 100%;
+            overflow-y: auto;
+        }
+
+        @media(min-width: 760px){
+            .offcanvas-md{
+                position: static;
+                overflow-y: auto;
+                display: flex;
+                flex-direction: column;
+                overflow-x: hidden;
+            }
+
+            .text-md-sm{
+                font-size: 0.75rem;
+            }
+        }
+    </style>
+
+
+    <!-- MAIN SAMA DENGAN INDEX -->
+    <div class="container-fluid d-flex flex-column p-0 vh-100">  
+        <div class="navbar navbar-expand-md bg-dark" data-bs-theme="dark">
+            <div class="container-fluid">
+                <div class="navbar-brand ms-2">Tokomu</div>
+                <div class="d-flex ms-auto">
+                    <button class="navbar-toggler" data-bs-target="#sidebar" data-bs-toggle="collapse" type="button">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="container-fluid p-0 d-flex flex-grow-1 overflow-hidden">
+            <div class="offcanvas-md" id="sidebar"> 
+                <div id="layout">
+                    <script>
+                        fetch('sidebar.html').then(response => response.text()).then(data => {document.getElementById('layout').innerHTML = data;
+                    
+
+                        const CurrentPage = window.location.pathname.split('/').pop() || 'index.html';
+                        const Links = document.querySelectorAll('.nav a');
+
+                        Links.forEach(link =>{
+                            if(CurrentPage == 'index.html'){
+                                document.querySelector('a[href^="main.html"]').classList.add('active');
+                            }else if(CurrentPage == link.getAttribute('href')){
+                                link.classList.add('active');
+                            }
+                        });
+
+                            }); 
+                    </script>
+                </div>
+            </div>
+        
+            <main class="container-fluid flex-grow-1 py-4 h-100 overflow-y-auto">
+                <div class="container-fluid p-0">
+                    <div class="row mb-3 d-flex justify-content-between align-items-center">
+                        <p class="m-0 pb-3 border-bottom mb-2"><a href="main.html">Home</a> / Customers</p>
+                    </div>
+
+                    <div class="row g-2 mb-3">
+                        <div class="col-6 col-md-3">
+                            <div class="card">
+                                <div class="card-body bg-primary text-light rounded shadow-sm">
+                                    <label for="" class="form-label">
+                                        Total
+                                    </label>
+                                    <h5 class="m-0">342</h5>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-6 col-md-3">
+                            <div class="card">
+                                <div class="card-body shadow-sm bg-success text-light rounded">
+                                    <label for="" class="form-label">
+                                        New
+                                    </label>
+                                    <h5 class="m-0">
+                                        11
+                                    </h5>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-6 col-md-3">
+                            <div class="card">
+                                <div class="card-body bg-warning rounded shadown-sm">
+                                    <label for="" class="form-label">
+                                        Active/Churn
+                                    </label>
+                                    <h5 class="m-0">202/140</h5>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-6 col-md-3">
+                            <div class="card">
+                                <div class="card-body bg-info rounded shadow-sm">
+                                    <label for="" class="form-label">CLV</label>
+                                    <h5 class="m-0">Rp. 95.000</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- <div class="row">
+                        <div class="col-12 col-md-6 mb-2">
+                            <div class="card">
+                                <div class="card-header d-flex justify-content-between align-items-center">
+                                    <h6 class="m-0">VIP / Whale</h6>
+                                    <button class="btn-light btn" data-bs-toggle="collapse" data-bs-target="#whale">
+                                        <i class="bi bi-chevron-right"></i>
+                                    </button>
+                                </div>
+                                <div class="card-body collapse" id="whale">
+                                    
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-md-6 mb-2">
+                            <div class="card">
+                                <div class="card-header d-flex justify-content-between align-items-center">
+                                    <h6 class="m-0">Repeater</h6>
+                                    <button class="btn-ligth btn" data-bs-target="#repeater" data-bs-toggle="collapse">
+                                        <i class="bi bi-chevron-right"></i>
+                                    </button>
+                                </div>
+                                <div class="card-body collapse" id="repeater">
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-md-6 mb-2">
+                            <div class="card">
+                                <div class="card-header d-flex justify-content-between align-items-center">
+                                    <h6 class="m-0">
+                                        Newbie
+                                    </h6>
+                                    <button class="btn btn-light" data-bs-toggle="collapse" data-bs-target="#newbie">
+                                        <i class="bi bi-chevron-right"></i>
+                                    </button>
+                                </div>
+                                <div class="card-body collapse" id="newbie">
+
+                                </div>
+                            </div>
+                        </div>
+                        
+
+                        <div class="col-12 col-md-6 mb-2">
+                            <div class="card">
+                                <div class="card-header d-flex justify-content-between align-items-center">
+                                    <h6 class="m-0">
+                                        Inactive
+                                    </h6>
+                                    <button class="btn btn-light" data-bs-toggle="collapse" data-bs-target="#inactive">
+                                        <i class="bi bi-chevron-right"></i>
+                                    </button>
+                                </div>
+                                <div class="card-body collapse" id="inactive">
+
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div> -->
+
+                    <div class="row mb-3">
+                        <div class="col-12 col-md-12">
+                            <div class="card">
+                                <div class="card-header d-flex justify-content-between align-items-center">
+                                    <h6 class="m-0">Customers</h6>
+                                    <div class="dropup d-md-none">
+                                        <button class="btn-light btn" data-bs-toggle="dropdown">
+                                            <i class="bi bi-search"></i>
+                                        </button>
+                                        <div class="dropdown-menu px-2 shadow-sm" style="width: 90vw; max-width: 300px">
+                                            <div class="input-group">
+                                                <input type="text" class="form-control">
+                                                <button class="btn-primary btn">
+                                                    <i class="bi bi-search"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="d-none d-md-flex">
+                                        <form action="">
+                                            <div class="input-group">
+                                                <input type="text" class="form-control">
+                                                <button class="btn-primary btn">
+                                                    <i class="bi bi-search"></i>
+                                                </button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <div class="table-responsive" style="max-height: 600px">
+                                        <table class="table table-hover align-middle mb-0 text-nowrap">
+                                            <thead class="table-light sticky-top">
+                                                <tr>
+                                                    <th class="ps-3">Pelanggan</th>
+                                                    <th>Segmentasi</th>
+                                                    <th>Kontak</th>
+                                                    <th>Total Belanja</th>
+                                                    <th class="text-center">Aksi</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td class="ps-3">
+                                                        <div class="d-flex align-items-center">
+                                                            <div class="bg-primary text-white rounded-circle d-flex justify-content-center align-items-center me-2" style="width: 40px; height: 40px; font-size: 0.9rem;">AF</div>
+                                                            <div>
+                                                                <div class="fw-bold">Ahmad Fauzi</div>
+                                                                <small class="text-muted text-nowrap">ID: #CUST-001</small>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td><span class="badge rounded-pill bg-success-subtle text-success px-3">VIP Member</span></td>
+                                                    <td>
+                                                        <div class="d-flex gap-2">
+                                                            <a href="https://wa.me/628123456789" target="_blank" class="btn btn-sm btn-outline-success d-flex justify-content-center align-items-center" title="Chat WhatsApp">
+                                                                <i class="bi bi-whatsapp"></i>
+                                                            </a>
+                                                            <div class="small">
+                                                                <div class="fw-bold">0812-3456-789</div>
+                                                                <div class="text-muted" style="font-size: 0.75rem;">ahmad.f@email.com</div>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td class="fw-bold text-primary">Rp 12.500.000</td>
+                                                    <td class="text-center">
+                                                        <button class="btn btn-sm btn-light border" data-bs-toggle="offcanvas" data-bs-target="#customerProfile">
+                                                            <i class="bi bi-person-badge"></i> Profile
+                                                        </button>
+                                                        <button class="btn btn-sm btn-outline-danger" onclick="return confirm('Yakin hapus Ahmad Fauzi?')">
+                                                            <i class="bi bi-trash"></i>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td class="ps-3">
+                                                        <div class="d-flex align-items-center">
+                                                            <div class="bg-secondary text-white rounded-circle d-flex justify-content-center align-items-center me-2" style="width: 40px; height: 40px; font-size: 0.9rem;">BS</div>
+                                                            <div>
+                                                                <div class="fw-bold">Budi Santoso</div>
+                                                                <small class="text-muted">ID: #CUST-002</small>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td><span class="badge rounded-pill bg-danger-subtle text-danger px-3">Inactive</span></td>
+                                                    <td>
+                                                        <div class="d-flex gap-2">
+                                                            <a href="https://wa.me/628123456789" target="_blank" class="btn btn-sm btn-outline-success d-flex justify-content-center align-items-center" title="Chat WhatsApp">
+                                                                <i class="bi bi-whatsapp"></i>
+                                                            </a>
+                                                            <div class="small">
+                                                                <div class="fw-bold">0857-1122-334</div>
+                                                                <div class="text-muted" style="font-size: 0.75rem;">budi.s@email.com</div>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td class="fw-bold">Rp 450.000</td>
+                                                    <td class="text-center">
+                                                        <button class="btn btn-sm btn-light border" data-bs-toggle="offcanvas" data-bs-target="#customerProfile"><i class="bi bi-person-badge"></i> Profile</button>
+                                                        <button class="btn btn-sm btn-outline-danger" onclick="return confirm('Yakin hapus Budi Santoso?')"><i class="bi bi-trash"></i></button>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="ps-3">
+                                                        <div class="d-flex align-items-center">
+                                                            <div class="bg-primary text-white rounded-circle d-flex justify-content-center align-items-center me-2" style="width: 40px; height: 40px; font-size: 0.9rem;">DL</div>
+                                                            <div>
+                                                                <div class="fw-bold">Dewi Lestari</div>
+                                                                <small class="text-muted">ID: #CUST-003</small>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td><span class="badge rounded-pill bg-success-subtle text-success px-3">VIP Member</span></td>
+                                                    <td>
+                                                        <div class="d-flex gap-2">
+                                                            <a href="https://wa.me/6281299887766" target="_blank" class="btn btn-sm btn-outline-success d-flex justify-content-center align-items-center" title="Chat WhatsApp">
+                                                                <i class="bi bi-whatsapp"></i>
+                                                            </a>
+                                                            <div class="small">
+                                                                <div class="fw-bold">0812-9988-7766</div>
+                                                                <div class="text-muted" style="font-size: 0.75rem;">dewi.l@email.com</div>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td class="fw-bold">Rp 15.200.000</td>
+                                                    <td class="text-center">
+                                                        <button class="btn btn-sm btn-light border" data-bs-toggle="offcanvas" data-bs-target="#customerProfile"><i class="bi bi-person-badge"></i> Profile</button>
+                                                        <button class="btn btn-sm btn-outline-danger" onclick="return confirm('Yakin hapus Dewi Lestari?')"><i class="bi bi-trash"></i></button>
+                                                    </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td class="ps-3">
+                                                        <div class="d-flex align-items-center">
+                                                            <div class="bg-info text-white rounded-circle d-flex justify-content-center align-items-center me-2" style="width: 40px; height: 40px; font-size: 0.9rem;">RH</div>
+                                                            <div>
+                                                                <div class="fw-bold">Rian Hidayat</div>
+                                                                <small class="text-muted">ID: #CUST-004</small>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td><span class="badge rounded-pill bg-info-subtle text-info px-3">Regular</span></td>
+                                                    <td>
+                                                        <div class="d-flex gap-2">
+                                                            <a href="https://wa.me/6285611223344" target="_blank" class="btn btn-sm btn-outline-success d-flex justify-content-center align-items-center" title="Chat WhatsApp">
+                                                                <i class="bi bi-whatsapp"></i>
+                                                            </a>
+                                                            <div class="small">
+                                                                <div class="fw-bold">0856-1122-3344</div>
+                                                                <div class="text-muted" style="font-size: 0.75rem;">rian.h@email.com</div>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td class="fw-bold">Rp 2.150.000</td>
+                                                    <td class="text-center">
+                                                        <button class="btn btn-sm btn-light border" data-bs-toggle="offcanvas" data-bs-target="#customerProfile"><i class="bi bi-person-badge"></i> Profile</button>
+                                                        <button class="btn btn-sm btn-outline-danger" onclick="return confirm('Yakin hapus Rian Hidayat?')"><i class="bi bi-trash"></i></button>
+                                                    </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td class="ps-3">
+                                                        <div class="d-flex align-items-center">
+                                                            <div class="bg-warning text-dark rounded-circle d-flex justify-content-center align-items-center me-2" style="width: 40px; height: 40px; font-size: 0.9rem;">SA</div>
+                                                            <div>
+                                                                <div class="fw-bold">Siti Aminah</div>
+                                                                <small class="text-muted">ID: #CUST-005</small>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td><span class="badge rounded-pill bg-warning-subtle text-warning px-3">New Member</span></td>
+                                                    <td>
+                                                        <div class="d-flex gap-2">
+                                                            <a href="https://wa.me/6287755443322" target="_blank" class="btn btn-sm btn-outline-success d-flex justify-content-center align-items-center" title="Chat WhatsApp">
+                                                                <i class="bi bi-whatsapp"></i>
+                                                            </a>
+                                                            <div class="small">
+                                                                <div class="fw-bold">0877-5544-3322</div>
+                                                                <div class="text-muted" style="font-size: 0.75rem;">siti.a@email.com</div>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td class="fw-bold">Rp 85.000</td>
+                                                    <td class="text-center">
+                                                        <button class="btn btn-sm btn-light border" data-bs-toggle="offcanvas" data-bs-target="#customerProfile"><i class="bi bi-person-badge"></i> Profile</button>
+                                                        <button class="btn btn-sm btn-outline-danger" onclick="return confirm('Yakin hapus Siti Aminah?')"><i class="bi bi-trash"></i></button>
+                                                    </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td class="ps-3">
+                                                        <div class="d-flex align-items-center">
+                                                            <div class="bg-primary text-white rounded-circle d-flex justify-content-center align-items-center me-2" style="width: 40px; height: 40px; font-size: 0.9rem;">EP</div>
+                                                            <div>
+                                                                <div class="fw-bold">Eka Putra</div>
+                                                                <small class="text-muted">ID: #CUST-006</small>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td><span class="badge rounded-pill bg-success-subtle text-success px-3">VIP Member</span></td>
+                                                    <td>
+                                                        <div class="d-flex gap-2">
+                                                            <a href="https://wa.me/6281311223344" target="_blank" class="btn btn-sm btn-outline-success d-flex justify-content-center align-items-center" title="Chat WhatsApp">
+                                                                <i class="bi bi-whatsapp"></i>
+                                                            </a>
+                                                            <div class="small">
+                                                                <div class="fw-bold">0813-1122-3344</div>
+                                                                <div class="text-muted" style="font-size: 0.75rem;">eka.p@email.com</div>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td class="fw-bold">Rp 9.800.000</td>
+                                                    <td class="text-center">
+                                                        <button class="btn btn-sm btn-light border" data-bs-toggle="offcanvas" data-bs-target="#customerProfile"><i class="bi bi-person-badge"></i> Profile</button>
+                                                        <button class="btn btn-sm btn-outline-danger" onclick="return confirm('Yakin hapus Eka Putra?')"><i class="bi bi-trash"></i></button>
+                                                    </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td class="ps-3">
+                                                        <div class="d-flex align-items-center">
+                                                            <div class="bg-secondary text-white rounded-circle d-flex justify-content-center align-items-center me-2" style="width: 40px; height: 40px; font-size: 0.9rem;">LW</div>
+                                                            <div>
+                                                                <div class="fw-bold">Linda Waty</div>
+                                                                <small class="text-muted">ID: #CUST-007</small>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td><span class="badge rounded-pill bg-danger-subtle text-danger px-3">Inactive</span></td>
+                                                    <td>
+                                                        <div class="d-flex gap-2">
+                                                            <a href="https://wa.me/6281900998877" target="_blank" class="btn btn-sm btn-outline-success d-flex justify-content-center align-items-center" title="Chat WhatsApp">
+                                                                <i class="bi bi-whatsapp"></i>
+                                                            </a>
+                                                            <div class="small">
+                                                                <div class="fw-bold">0819-0099-8877</div>
+                                                                <div class="text-muted" style="font-size: 0.75rem;">linda.w@email.com</div>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td class="fw-bold">Rp 320.000</td>
+                                                    <td class="text-center">
+                                                        <button class="btn btn-sm btn-light border" data-bs-toggle="offcanvas" data-bs-target="#customerProfile"><i class="bi bi-person-badge"></i> Profile</button>
+                                                        <button class="btn btn-sm btn-outline-danger" onclick="return confirm('Yakin hapus Linda Waty?')"><i class="bi bi-trash"></i></button>
+                                                    </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td class="ps-3">
+                                                        <div class="d-flex align-items-center">
+                                                            <div class="bg-info text-white rounded-circle d-flex justify-content-center align-items-center me-2" style="width: 40px; height: 40px; font-size: 0.9rem;">YM</div>
+                                                            <div>
+                                                                <div class="fw-bold">Yusuf Mansur</div>
+                                                                <small class="text-muted">ID: #CUST-008</small>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td><span class="badge rounded-pill bg-info-subtle text-info px-3">Regular</span></td>
+                                                    <td>
+                                                        <div class="d-flex gap-2">
+                                                            <a href="https://wa.me/6281122334455" target="_blank" class="btn btn-sm btn-outline-success d-flex justify-content-center align-items-center" title="Chat WhatsApp">
+                                                                <i class="bi bi-whatsapp"></i>
+                                                            </a>
+                                                            <div class="small">
+                                                                <div class="fw-bold">0811-2233-4455</div>
+                                                                <div class="text-muted" style="font-size: 0.75rem;">yusuf.m@email.com</div>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td class="fw-bold">Rp 1.450.000</td>
+                                                    <td class="text-center">
+                                                        <button class="btn btn-sm btn-light border" data-bs-toggle="offcanvas" data-bs-target="#customerProfile"><i class="bi bi-person-badge"></i> Profile</button>
+                                                        <button class="btn btn-sm btn-outline-danger" onclick="return confirm('Yakin hapus Yusuf Mansur?')"><i class="bi bi-trash"></i></button>
+                                                    </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td class="ps-3">
+                                                        <div class="d-flex align-items-center">
+                                                            <div class="bg-primary text-white rounded-circle d-flex justify-content-center align-items-center me-2" style="width: 40px; height: 40px; font-size: 0.9rem;">SK</div>
+                                                            <div>
+                                                                <div class="fw-bold">Siska Kohl</div>
+                                                                <small class="text-muted">ID: #CUST-009</small>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td><span class="badge rounded-pill bg-success-subtle text-success px-3">VIP Member</span></td>
+                                                    <td>
+                                                        <div class="d-flex gap-2">
+                                                            <a href="https://wa.me/6281211112222" target="_blank" class="btn btn-sm btn-outline-success d-flex justify-content-center align-items-center" title="Chat WhatsApp">
+                                                                <i class="bi bi-whatsapp"></i>
+                                                            </a>
+                                                            <div class="small">
+                                                                <div class="fw-bold">0812-1111-2222</div>
+                                                                <div class="text-muted" style="font-size: 0.75rem;">siska.k@email.com</div>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td class="fw-bold">Rp 45.000.000</td>
+                                                    <td class="text-center">
+                                                        <button class="btn btn-sm btn-light border" data-bs-toggle="offcanvas" data-bs-target="#customerProfile"><i class="bi bi-person-badge"></i> Profile</button>
+                                                        <button class="btn btn-sm btn-outline-danger" onclick="return confirm('Yakin hapus Siska Kohl?')"><i class="bi bi-trash"></i></button>
+                                                    </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td class="ps-3">
+                                                        <div class="d-flex align-items-center">
+                                                            <div class="bg-secondary text-white rounded-circle d-flex justify-content-center align-items-center me-2" style="width: 40px; height: 40px; font-size: 0.9rem;">RI</div>
+                                                            <div>
+                                                                <div class="fw-bold">Rahmat Illahi</div>
+                                                                <small class="text-muted">ID: #CUST-010</small>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td><span class="badge rounded-pill bg-danger-subtle text-danger px-3">Inactive</span></td>
+                                                    <td>
+                                                        <div class="d-flex gap-2">
+                                                            <a href="https://wa.me/6285233445566" target="_blank" class="btn btn-sm btn-outline-success d-flex justify-content-center align-items-center" title="Chat WhatsApp">
+                                                                <i class="bi bi-whatsapp"></i>
+                                                            </a>
+                                                            <div class="small">
+                                                                <div class="fw-bold">0852-3344-5566</div>
+                                                                <div class="text-muted" style="font-size: 0.75rem;">rahmat.i@email.com</div>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td class="fw-bold">Rp 120.000</td>
+                                                    <td class="text-center">
+                                                        <button class="btn btn-sm btn-light border" data-bs-toggle="offcanvas" data-bs-target="#customerProfile"><i class="bi bi-person-badge"></i> Profile</button>
+                                                        <button class="btn btn-sm btn-outline-danger" onclick="return confirm('Yakin hapus Rahmat Illahi?')"><i class="bi bi-trash"></i></button>
+                                                    </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td class="ps-3">
+                                                        <div class="d-flex align-items-center">
+                                                            <div class="bg-info text-white rounded-circle d-flex justify-content-center align-items-center me-2" style="width: 40px; height: 40px; font-size: 0.9rem;">AS</div>
+                                                            <div>
+                                                                <div class="fw-bold">Ani Sumarni</div>
+                                                                <small class="text-muted">ID: #CUST-011</small>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td><span class="badge rounded-pill bg-info-subtle text-info px-3">Regular</span></td>
+                                                    <td>
+                                                        <div class="d-flex gap-2">
+                                                            <a href="https://wa.me/6281566778899" target="_blank" class="btn btn-sm btn-outline-success d-flex justify-content-center align-items-center" title="Chat WhatsApp">
+                                                                <i class="bi bi-whatsapp"></i>
+                                                            </a>
+                                                            <div class="small">
+                                                                <div class="fw-bold">0815-6677-8899</div>
+                                                                <div class="text-muted" style="font-size: 0.75rem;">ani.s@email.com</div>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td class="fw-bold">Rp 2.750.000</td>
+                                                    <td class="text-center">
+                                                        <button class="btn btn-sm btn-light border" data-bs-toggle="offcanvas" data-bs-target="#customerProfile"><i class="bi bi-person-badge"></i> Profile</button>
+                                                        <button class="btn btn-sm btn-outline-danger" onclick="return confirm('Yakin hapus Ani Sumarni?')"><i class="bi bi-trash"></i></button>
+                                                    </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td class="ps-3">
+                                                        <div class="d-flex align-items-center">
+                                                            <div class="bg-primary text-white rounded-circle d-flex justify-content-center align-items-center me-2" style="width: 40px; height: 40px; font-size: 0.9rem;">KS</div>
+                                                            <div>
+                                                                <div class="fw-bold">Kevin Sanjaya</div>
+                                                                <small class="text-muted">ID: #CUST-012</small>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td><span class="badge rounded-pill bg-success-subtle text-success px-3">VIP Member</span></td>
+                                                    <td>
+                                                        <div class="d-flex gap-2">
+                                                            <a href="https://wa.me/6281222334455" target="_blank" class="btn btn-sm btn-outline-success d-flex justify-content-center align-items-center" title="Chat WhatsApp">
+                                                                <i class="bi bi-whatsapp"></i>
+                                                            </a>
+                                                            <div class="small">
+                                                                <div class="fw-bold">0812-2233-4455</div>
+                                                                <div class="text-muted" style="font-size: 0.75rem;">kevin.s@email.com</div>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td class="fw-bold">Rp 8.900.000</td>
+                                                    <td class="text-center">
+                                                        <button class="btn btn-sm btn-light border" data-bs-toggle="offcanvas" data-bs-target="#customerProfile"><i class="bi bi-person-badge"></i> Profile</button>
+                                                        <button class="btn btn-sm btn-outline-danger" onclick="return confirm('Yakin hapus Kevin Sanjaya?')"><i class="bi bi-trash"></i></button>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </main>
+    
+        </div>
+    </div>
+        
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="customerProfile" style="width: 400px;">
+        <div class="offcanvas-header border-bottom bg-light">
+            <h5 class="offcanvas-title fw-bold">Detail Profil Pelanggan</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+        </div>
+        <div class="offcanvas-body">
+            <div class="text-center mb-4">
+                <div class="bg-primary text-white rounded-circle d-inline-flex justify-content-center align-items-center mb-3 shadow" style="width: 80px; height: 80px; font-size: 2rem;">AF</div>
+                <h5 class="fw-bold mb-0">Ahmad Fauzi</h5>
+                <span class="badge bg-success-subtle text-success">VIP Member</span>
+            </div>
+            
+            <div class="mb-4">
+                <h6 class="fw-bold small text-uppercase text-muted border-bottom pb-2">Informasi Kontak</h6>
+                <div class="d-flex justify-content-between py-2">
+                    <span class="text-muted">WhatsApp</span>
+                    <span class="fw-bold">0812-3456-789</span>
+                </div>
+                <div class="d-flex justify-content-between py-2">
+                    <span class="text-muted">Email</span>
+                    <span class="fw-bold">ahmad.f@email.com</span>
+                </div>
+            </div>
+
+            <div>
+                <h6 class="fw-bold small text-uppercase text-muted border-bottom pb-2">Ringkasan Belanja</h6>
+                <div class="row g-2 mt-2">
+                    <div class="col-6 text-center border-end">
+                        <div class="small text-muted">Total Order</div>
+                        <div class="fw-bold h5 mb-0">42</div>
+                    </div>
+                    <div class="col-6 text-center">
+                        <div class="small text-muted">Total Spend</div>
+                        <div class="fw-bold h5 mb-0 text-primary">12.5jt</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="offcanvas-footer p-3 border-top">
+            <button class="btn btn-outline-primary w-100 mb-2">Lihat Semua Order</button>
+            <button class="btn btn-danger w-100">Beri Blacklist</button>
+        </div>
+    </div>
+
+
+    
+
+    
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</body>
+</html>
