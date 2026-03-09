@@ -110,7 +110,20 @@
                             <div class="card">
                                 <div class="card-header d-flex justify-content-between align-items-center">
                                     <h6 class="m-0">Orders</h6>
-                                    <form action="">
+                                    <div class="dropup d-md-none">
+                                        <button class="btn btn-light" data-bs-toggle="dropdown">
+                                            <i class="bi bi-search"></i>
+                                        </button>
+                                        <div class="dropdown-menu px-2" style="width: 90vw; max-width: 300px">
+                                            <div class="input-group">
+                                                <input type="text" class="form-control">
+                                                <button class="btn-primary btn">
+                                                    <i class="bi bi-search"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <form action="" class="d-none d-md-flex">
                                         <div class="input-group">
                                             <input type="text" class="form-control">
                                             <button class="btn btn-primary">
@@ -385,7 +398,7 @@
             </div>
         </div>
         <div class="offcanvas-footer p-3 border-top">
-            <button class="btn btn-primary w-100">Print Invoice</button>
+            <button class="btn btn-primary w-100" onclick="window.print()">Print Invoice</button>
         </div>
     </div>
         

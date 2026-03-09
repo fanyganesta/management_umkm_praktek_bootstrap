@@ -72,7 +72,7 @@
                 <div class="container-fluid p-0">
                     <div class="row">
                         <div class="col-12 pb-2 border-bottom mb-3">
-                            <p class="m-0"><a href="main.html">Home</a> / Category</p>
+                            <p class="m-0"><a href="main.html">Home</a> / Inventory</p>
                         </div>
                     </div>
 
@@ -240,7 +240,20 @@
                             <div class="card overflow-y-auto">
                                 <div class="card-header d-flex justify-content-between align-items-center">
                                     <h6 class="m-0">Inventory</h6>
-                                    <form action="">
+                                    <div class="dropdown">
+                                        <button class="btn btn-light d-md-none" data-bs-toggle="dropdown">
+                                            <i class="bi bi-search"></i>
+                                        </button>
+                                        <div class="dropdown-menu px-2" style="width: 90vw; max-width: 300px">
+                                            <div class="input-group">
+                                                <input type="text" class="form-control">
+                                                <button class="btn btn-primary">
+                                                    <i class="bi bi-search"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <form action="" class=" d-none d-md-block">
                                         <div class="input-group">
                                                 <input type="text" class="form-control">
                                                 <button class="btn btn-primary">

@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MANAGEMENT UMKM</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/themes/material_blue.css">
+
+</head>
+<body>
+    <style>
+        .offcanvas-md{
+            --bs-offcanvas-width: 230px;
+            height: 100%;
+            overflow-y: auto;
+        }
+
+        @media(min-width: 760px){
+            .offcanvas-md{
+                position: static;
+                overflow-y: auto;
+                display: flex;
+                flex-direction: column;
+                overflow-x: hidden;
+            }
+
+            .text-md-sm{
+                font-size: 0.75rem;
+            }
+        }
+    </style>
+
+
+    <!-- MAIN SAMA DENGAN INDEX -->
+    <div class="container-fluid d-flex flex-column p-0 vh-100">  
+        <div class="navbar navbar-expand-md bg-dark" data-bs-theme="dark">
+            <div class="container-fluid">
+                <div class="navbar-brand ms-2">Tokomu</div>
+                <div class="d-flex ms-auto">
+                    <button class="navbar-toggler" data-bs-target="#sidebar" data-bs-toggle="collapse" type="button">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="container-fluid p-0 d-flex flex-grow-1 overflow-hidden">
+            <div class="offcanvas-md" id="sidebar"> 
+                <div id="layout">
+                    <script>
+                        fetch('sidebar.html').then(response => response.text()).then(data => {document.getElementById('layout').innerHTML = data;
+                    
+
+                        const CurrentPage = window.location.pathname.split('/').pop() || 'index.html';
+                        const Links = document.querySelectorAll('.nav a');
+
+                        Links.forEach(link =>{
+                            if(CurrentPage == 'index.html'){
+                                document.querySelector('a[href^="main.html"]').classList.add('active');
+                            }else if(CurrentPage == link.getAttribute('href')){
+                                link.classList.add('active');
+                            }
+                        });
+
+                            }); 
+                    </script>
+                </div>
+            </div>
+        
+            <main class="container-fluid flex-grow-1 py-4 h-100 overflow-y-auto">
+                <div class="container-fluid p-0">
+
+                    <div class="row d-flex justify-content-between align-items-center pb-3 border-bottom mb-2">
+                        <p class="m-0"> <a href="main.html">Home</a> / Transaction</p>
+                    </div>
+
+
+                    <div class="row">
+                        
+                        <div class="col-12 col-md-6">
+                            <div class="container d-flex flex-column justify-content-between h-100">
+                                <div class="row border-bottom pb-2">
+                                    <div class="col-12 mb-3">
+                                        <div class="mb-3">
+                                            <h6 class="">Filter Periode Transaksi</h6>
+                                            <div class="input-group">
+                                                <span class="input-group-text bg-white"><i class="bi bi-calendar3"></i></span>
+                                                <input type="text" id="filterTanggal" class="form-control bg-white" placeholder="Pilih Hari atau Rentang...">
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="d-flex flex-wrap gap-2">
+                                            <button class="btn btn-sm btn-outline-secondary" onclick="setQuickFilter('today')">Hari Ini</button>
+                                            <button class="btn btn-sm btn-outline-secondary" onclick="setQuickFilter('last7')">7 Hari Terakhir</button>
+                                            <button class="btn btn-sm btn-outline-secondary" onclick="setQuickFilter('thisMonth')">Bulan Ini</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="row g-2">
+                                    <div class="col-6">
+                                        <div class="card">
+                                            <div class="card-body bg-primary text-light rounded shadow-sm">
+                                                <label for="" class="form-label">Total Revenue</label>
+                                                <h5 class="m-0">Rp. 31.110.000</h5>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-6">
+                                        <div class="card">
+                                            <div class="card-body bg-info rounded shadow-sm">
+                                                <label for="" class="form-label">Pending Gateway</label>
+                                                <h5 class="m-0">Rp. 110.000</h5>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-6">
+                                        <div class="card">
+                                            <div class="card-body bg-warning rounded shadow-sm">
+                                                <label for="" class="form-label">Refund Rate</label>
+                                                <h5 class="m-0">13%</h5>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-6">
+                                        <div class="card">
+                                            <div class="card-body bg-success rounded shadow-sm text-light">
+                                                <label for="" class="form-label">ATM Value</label>
+                                                <h5 class="m-0">Rp. 187.000</h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-md-6 mt-3">
+                            <div class="card shadow-sm">
+                                <div class="card-header bg-white py-1 d-flex justify-content-between align-items-center">
+                                    <h6 class="m-0 ">Arus Kas</h6>
+                                    <select class="form-select form-select-sm w-auto" id="chartPeriod">
+                                        <option value="7">7 Hari Terakhir</option>
+                                        <option value="30">30 Hari Terakhir</option>
+                                    </select>
+                                </div>
+                                <div class="card-body">
+                                    <div style="position: relative; height: 300px; width: 100%;">
+                                        <canvas id="cashFlowChart"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row mt-3">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-header d-flex justify-content-between align-items-center">
+                                    <h6 class="m-0">Transactions</h6>
+                                    <div class="dropup d-md-none">
+                                        <button class="btn btn-light" data-bs-toggle="dropdown">
+                                            <i class="bi bi-search"></i>
+                                        </button>
+                                        <div class="dropdown-menu px-2" style="width: 90vw; max-width: 300px">
+                                            <form action="">
+                                                <div class="input-group">
+                                                    <input type="text" class="form-control">
+                                                    <button class="btn-primary btn">
+                                                        <i class="bi bi-search"></i>
+                                                    </button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+
+                                    <form action="" class="d-none d-md-block">
+                                        <div class="input-group">
+                                            <input type="text" class="form-control">
+                                            <button class="btn btn-primary">
+                                                <i class="bi bi-search"></i>
+                                            </button>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="card-body">
+                                    <div class="table-responsive" style="max-height: 600px">
+                                        <table class="table table-hover align-middle">
+                                            <thead class="table-light text-nowrap sticky-top">
+                                                <tr>
+                                                    <th>ID</th>
+                                                    <th>Date</th>
+                                                    <th>Customer</th>
+                                                    <th>Product</th>
+                                                    <th>Category</th>
+                                                    <th>Qty</th>
+                                                    <th>Price</th>
+                                                    <th>Total</th>
+                                                    <th>Payment</th>
+                                                    <th>Status</th>
+                                                    <th class="text-center">Action</th>
+                                                </tr>
+                                            </thead>
+
+                                            <tbody class="text-nowrap">
+                                                <tr>
+                                                    <td>#TRX001</td>
+                                                    <td>09 Mar 2026</td>
+                                                    <td>Andi Saputra</td>
+                                                    <td>Kopi Arabica</td>
+                                                    <td>Coffee Beans</td>
+                                                    <td>2</td>
+                                                    <td>Rp 85.000</td>
+                                                    <td>Rp 170.000</td>
+                                                    <td>QRIS</td>
+                                                    <td><span class="badge bg-success">Paid</span></td>
+                                                    <td class="text-center">
+                                                        <button 
+                                                            class="btn btn-sm btn-primary text-nowrap"
+                                                            data-bs-toggle="offcanvas"
+                                                            data-bs-target="#paymentDetail">
+                                                            Detail
+                                                        </button>
+                                                    </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td>#TRX002</td>
+                                                    <td>09 Mar 2026</td>
+                                                    <td>Siti Rahma</td>
+                                                    <td>Susu UHT</td>
+                                                    <td>Dairy</td>
+                                                    <td>3</td>
+                                                    <td>Rp 18.000</td>
+                                                    <td>Rp 54.000</td>
+                                                    <td>Cash</td>
+                                                    <td><span class="badge bg-success">Paid</span></td>
+                                                    <td class="text-center">
+                                                        
+                                                        <button 
+                                                            class="btn btn-sm btn-primary text-nowrap"
+                                                            data-bs-toggle="offcanvas"
+                                                            data-bs-target="#paymentDetail">
+                                                            Detail
+                                                        </button>
+                                                    </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td>#TRX003</td>
+                                                    <td>09 Mar 2026</td>
+                                                    <td>Budi Santoso</td>
+                                                    <td>Sirup Vanilla</td>
+                                                    <td>Syrup</td>
+                                                    <td>1</td>
+                                                    <td>Rp 95.000</td>
+                                                    <td>Rp 95.000</td>
+                                                    <td>Transfer</td>
+                                                    <td><span class="badge bg-warning text-dark">Pending</span></td>
+                                                    <td class="text-center">
+                                                        
+                                                        <button 
+                                                            class="btn btn-sm btn-primary text-nowrap"
+                                                            data-bs-toggle="offcanvas"
+                                                            data-bs-target="#paymentDetail">
+                                                            Detail
+                                                        </button>
+                                                    </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td>#TRX004</td>
+                                                    <td>08 Mar 2026</td>
+                                                    <td>Dewi Lestari</td>
+                                                    <td>Paper Filter V60</td>
+                                                    <td>Brewing Tools</td>
+                                                    <td>2</td>
+                                                    <td>Rp 45.000</td>
+                                                    <td>Rp 90.000</td>
+                                                    <td>QRIS</td>
+                                                    <td><span class="badge bg-success">Paid</span></td>
+                                                    <td class="text-center">
+                                                        
+                                                        <button 
+                                                            class="btn btn-sm btn-primary text-nowrap"
+                                                            data-bs-toggle="offcanvas"
+                                                            data-bs-target="#paymentDetail">
+                                                            Detail
+                                                        </button>
+                                                    </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td>#TRX005</td>
+                                                    <td>08 Mar 2026</td>
+                                                    <td>Rudi Hartono</td>
+                                                    <td>Kopi Robusta</td>
+                                                    <td>Coffee Beans</td>
+                                                    <td>1</td>
+                                                    <td>Rp 65.000</td>
+                                                    <td>Rp 65.000</td>
+                                                    <td>Cash</td>
+                                                    <td><span class="badge bg-danger">Cancelled</span></td>
+                                                    <td class="text-center">
+                                                        
+                                                        <button 
+                                                            class="btn btn-sm btn-primary text-nowrap"
+                                                            data-bs-toggle="offcanvas"
+                                                            data-bs-target="#paymentDetail">
+                                                            Detail
+                                                        </button>
+                                                    </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td>#TRX006</td>
+                                                    <td>07 Mar 2026</td>
+                                                    <td>Ahmad Fauzi</td>
+                                                    <td>Syrup Caramel</td>
+                                                    <td>Syrup</td>
+                                                    <td>2</td>
+                                                    <td>Rp 90.000</td>
+                                                    <td>Rp 180.000</td>
+                                                    <td>Transfer</td>
+                                                    <td><span class="badge bg-success">Paid</span></td>
+                                                    <td class="text-center">
+                                                        
+                                                        <button 
+                                                            class="btn btn-sm btn-primary text-nowrap"
+                                                            data-bs-toggle="offcanvas"
+                                                            data-bs-target="#paymentDetail">
+                                                            Detail
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>#TRX007</td>
+                                                    <td>07 Mar 2026</td>
+                                                    <td>Siti Aminah</td>
+                                                    <td>Espresso Roast 250g</td>
+                                                    <td>Coffee Bean</td>
+                                                    <td>1</td>
+                                                    <td>Rp 120.000</td>
+                                                    <td>Rp 120.000</td>
+                                                    <td>E-Wallet</td>
+                                                    <td><span class="badge bg-success">Paid</span></td>
+                                                    <td class="text-center">
+                                                        <button class="btn btn-sm btn-primary text-nowrap" data-bs-toggle="offcanvas" data-bs-target="#paymentDetail">Detail</button>
+                                                    </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td>#TRX008</td>
+                                                    <td>08 Mar 2026</td>
+                                                    <td>Budi Santoso</td>
+                                                    <td>Oat Milk 1L</td>
+                                                    <td>Dairy</td>
+                                                    <td>3</td>
+                                                    <td>Rp 45.000</td>
+                                                    <td>Rp 135.000</td>
+                                                    <td>Cash</td>
+                                                    <td><span class="badge bg-warning text-dark">Pending</span></td>
+                                                    <td class="text-center">
+                                                        <button class="btn btn-sm btn-primary text-nowrap" data-bs-toggle="offcanvas" data-bs-target="#paymentDetail">Detail</button>
+                                                    </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td>#TRX009</td>
+                                                    <td>08 Mar 2026</td>
+                                                    <td>Dewi Lestari</td>
+                                                    <td>Syrup Vanilla</td>
+                                                    <td>Syrup</td>
+                                                    <td>1</td>
+                                                    <td>Rp 90.000</td>
+                                                    <td>Rp 90.000</td>
+                                                    <td>Transfer</td>
+                                                    <td><span class="badge bg-success">Paid</span></td>
+                                                    <td class="text-center">
+                                                        <button class="btn btn-sm btn-primary text-nowrap" data-bs-toggle="offcanvas" data-bs-target="#paymentDetail">Detail</button>
+                                                    </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td>#TRX010</td>
+                                                    <td>08 Mar 2026</td>
+                                                    <td>Rian Hidayat</td>
+                                                    <td>Paper Filter V60</td>
+                                                    <td>Tools</td>
+                                                    <td>5</td>
+                                                    <td>Rp 35.000</td>
+                                                    <td>Rp 175.000</td>
+                                                    <td>E-Wallet</td>
+                                                    <td><span class="badge bg-success">Paid</span></td>
+                                                    <td class="text-center">
+                                                        <button class="btn btn-sm btn-primary text-nowrap" data-bs-toggle="offcanvas" data-bs-target="#paymentDetail">Detail</button>
+                                                    </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td>#TRX011</td>
+                                                    <td>09 Mar 2026</td>
+                                                    <td>Maya Kartika</td>
+                                                    <td>Arabica Gayo 500g</td>
+                                                    <td>Coffee Bean</td>
+                                                    <td>2</td>
+                                                    <td>Rp 150.000</td>
+                                                    <td>Rp 300.000</td>
+                                                    <td>Transfer</td>
+                                                    <td><span class="badge bg-danger">Cancelled</span></td>
+                                                    <td class="text-center">
+                                                        <button class="btn btn-sm btn-primary text-nowrap" data-bs-toggle="offcanvas" data-bs-target="#paymentDetail">Detail</button>
+                                                    </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td>#TRX012</td>
+                                                    <td>09 Mar 2026</td>
+                                                    <td>Andi Wijaya</td>
+                                                    <td>Syrup Hazelnut</td>
+                                                    <td>Syrup</td>
+                                                    <td>2</td>
+                                                    <td>Rp 90.000</td>
+                                                    <td>Rp 180.000</td>
+                                                    <td>Cash</td>
+                                                    <td><span class="badge bg-success">Paid</span></td>
+                                                    <td class="text-center">
+                                                        <button class="btn btn-sm btn-primary text-nowrap" data-bs-toggle="offcanvas" data-bs-target="#paymentDetail">Detail</button>
+                                                    </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td>#TRX013</td>
+                                                    <td>09 Mar 2026</td>
+                                                    <td>Eka Putri</td>
+                                                    <td>Chocolate Powder 1kg</td>
+                                                    <td>Powder</td>
+                                                    <td>1</td>
+                                                    <td>Rp 115.000</td>
+                                                    <td>Rp 115.000</td>
+                                                    <td>E-Wallet</td>
+                                                    <td><span class="badge bg-success">Paid</span></td>
+                                                    <td class="text-center">
+                                                        <button class="btn btn-sm btn-primary text-nowrap" data-bs-toggle="offcanvas" data-bs-target="#paymentDetail">Detail</button>
+                                                    </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td>#TRX014</td>
+                                                    <td>09 Mar 2026</td>
+                                                    <td>Hendra Kurnia</td>
+                                                    <td>Manual Grinder</td>
+                                                    <td>Tools</td>
+                                                    <td>1</td>
+                                                    <td>Rp 250.000</td>
+                                                    <td>Rp 250.000</td>
+                                                    <td>Transfer</td>
+                                                    <td><span class="badge bg-warning text-dark">Pending</span></td>
+                                                    <td class="text-center">
+                                                        <button class="btn btn-sm btn-primary text-nowrap" data-bs-toggle="offcanvas" data-bs-target="#paymentDetail">Detail</button>
+                                                    </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td>#TRX015</td>
+                                                    <td>09 Mar 2026</td>
+                                                    <td>Rina Rose</td>
+                                                    <td>Matcha Powder 500g</td>
+                                                    <td>Powder</td>
+                                                    <td>2</td>
+                                                    <td>Rp 85.000</td>
+                                                    <td>Rp 170.000</td>
+                                                    <td>E-Wallet</td>
+                                                    <td><span class="badge bg-success">Paid</span></td>
+                                                    <td class="text-center">
+                                                        <button class="btn btn-sm btn-primary text-nowrap" data-bs-toggle="offcanvas" data-bs-target="#paymentDetail">Detail</button>
+                                                    </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td>#TRX016</td>
+                                                    <td>09 Mar 2026</td>
+                                                    <td>Guntur Prabowo</td>
+                                                    <td>Robusta Java 1kg</td>
+                                                    <td>Coffee Bean</td>
+                                                    <td>1</td>
+                                                    <td>Rp 140.000</td>
+                                                    <td>Rp 140.000</td>
+                                                    <td>Cash</td>
+                                                    <td><span class="badge bg-success">Paid</span></td>
+                                                    <td class="text-center">
+                                                        <button class="btn btn-sm btn-primary text-nowrap" data-bs-toggle="offcanvas" data-bs-target="#paymentDetail">Detail</button>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                </div>
+            </main>
+    
+        </div>
+    </div>
+
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="paymentDetail">
+    
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title">Transaction Detail</h5>
+            <button class="btn-close" data-bs-dismiss="offcanvas"></button>
+        </div>
+
+        <div class="offcanvas-body">
+
+            <!-- Transaction Info -->
+            <div class="card mb-3">
+                <div class="card-body text-nowrap">
+
+                    <div class="d-flex justify-content-between mb-2">
+                        <span>Transaction ID</span>
+                        <strong>#TRX001</strong>
+                    </div>
+
+                    <div class="d-flex justify-content-between mb-2">
+                        <span>Date</span>
+                        <span>09 Mar 2026</span>
+                    </div>
+
+                    <div class="d-flex justify-content-between mb-2">
+                        <span>Customer</span>
+                        <span>Andi Saputra</span>
+                    </div>
+
+                    <div class="d-flex justify-content-between mb-2">
+                        <span>Payment</span>
+                        <span>QRIS</span>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Product List -->
+            <div class="card mb-3">
+                <div class="card-header">
+                    Products
+                </div>
+
+                <div class="table-responsive">
+                    <table class="table table-sm align-middle mb-0">
+                        <thead class="table-light text-nowrap">
+                            <tr>
+                                <th>Product</th>
+                                <th>Qty</th>
+                                <th>Price</th>
+                                <th>Total</th>
+                            </tr>
+                        </thead>
+
+                        <tbody class="text-nowrap">
+                            <tr>
+                                <td>Kopi Arabica</td>
+                                <td>2</td>
+                                <td>Rp 85.000</td>
+                                <td>Rp 170.000</td>
+                            </tr>
+
+                            <tr>
+                                <td>Susu UHT</td>
+                                <td>1</td>
+                                <td>Rp 18.000</td>
+                                <td>Rp 18.000</td>
+                            </tr>
+
+                            <tr>
+                                <td>Sirup Vanilla</td>
+                                <td>1</td>
+                                <td>Rp 95.000</td>
+                                <td>Rp 95.000</td>
+                            </tr>
+
+                            <tr>
+                                <td>Paper Filter V60</td>
+                                <td>1</td>
+                                <td>Rp 45.000</td>
+                                <td>Rp 45.000</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Payment Summary -->
+            <div class="card">
+                <div class="card-body text-nowrap">
+
+                    <div class="d-flex justify-content-between mb-2">
+                        <span>Subtotal</span>
+                        <span>Rp 328.000</span>
+                    </div>
+
+                    <div class="d-flex justify-content-between mb-2">
+                        <span>Tax</span>
+                        <span>Rp 32.800</span>
+                    </div>
+
+                    <hr>
+
+                    <div class="d-flex justify-content-between">
+                        <strong>Total</strong>
+                        <strong>Rp 360.800</strong>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Footer -->
+        <div class="p-3 border-top text-center">
+            <button class="btn btn-success px-4" onclick="window.print()">
+                Print Receipt
+            </button>
+        </div>
+
+    </div>
+        
+    
+
+
+    
+
+    
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
+
+    <!-- for date range -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+    
+        const fp = flatpickr("#filterTanggal", {
+            mode: "range",
+            dateFormat: "Y-m-d", // Format kirim ke database (Backend)
+            altInput: true,      // Menampilkan format rapi ke user
+            altFormat: "d M Y",  // Contoh: 09 Mar 2026
+            allowInput: true,
+            prevArrow: "<i class='bi bi-chevron-left'></i>", // Pakai icon Bootstrap
+            nextArrow: "<i class='bi bi-chevron-right'></i>",
+            
+            // Logika saat user selesai memilih
+            onClose: function(selectedDates, dateStr, instance) {
+                if (selectedDates.length === 1) {
+                    // Jika user cuma klik 1 tanggal (Harian), otomatis set end date sama dengan start date
+                    instance.setDate([selectedDates[0], selectedDates[0]], true);
+                }
+                
+                // Panggil fungsi filter (Contoh: kirim data ke backend via Ajax)
+                updateTableTransaksi(dateStr);
+            },
+            
+            // Opsional: Batasi agar user tidak bisa pilih tanggal masa depan (Future Date)
+            maxDate: "today"
+        });
+
+        // FUNGSI TAMBAHAN: Shortcut Filter Cepat
+        // Kamu bisa panggil ini dari tombol luar atau dropdown
+        window.setQuickFilter = function(period) {
+            const today = new Date();
+            let start = new Date();
+
+            if (period === 'today') {
+                fp.setDate([today, today], true);
+            } else if (period === 'yesterday') {
+                start.setDate(today.getDate() - 1);
+                fp.setDate([start, start], true);
+            } else if (period === 'last7') {
+                start.setDate(today.getDate() - 7);
+                fp.setDate([start, today], true);
+            } else if (period === 'thisMonth') {
+                start = new Date(today.getFullYear(), today.getMonth(), 1);
+                fp.setDate([start, today], true);
+            }
+        }
+    });
+
+    function updateTableTransaksi(range) {
+        console.log("Memulai Filter untuk periode: " + range);
+        // Masukkan logika fetch() atau $.ajax kamu di sini
+    }
+    </script>
+
+
+
+
+    <!-- grafik transaksi -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+        const ctx = document.getElementById('cashFlowChart').getContext('2d');
+
+        // Membuat Gradient untuk background Uang Masuk
+        const incomeGradient = ctx.createLinearGradient(0, 0, 0, 400);
+        incomeGradient.addColorStop(0, 'rgba(25, 135, 84, 0.2)');
+        incomeGradient.addColorStop(1, 'rgba(25, 135, 84, 0)');
+
+        const cashFlowChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['03 Mar', '04 Mar', '05 Mar', '06 Mar', '07 Mar', '08 Mar', '09 Mar'], // Tanggal
+                datasets: [
+                    {
+                        label: 'Uang Masuk (Income)',
+                        data: [1200000, 1900000, 1500000, 2500000, 2200000, 3100000, 2800000],
+                        borderColor: '#198754', // Warna Hijau Bootstrap
+                        backgroundColor: incomeGradient,
+                        fill: true,
+                        tension: 0.4, // Membuat garis melengkung (smooth)
+                        borderWidth: 3,
+                        pointRadius: 4,
+                        pointBackgroundColor: '#198754'
+                    },
+                    {
+                        label: 'Uang Keluar (Expense)',
+                        data: [800000, 1200000, 1100000, 1800000, 1400000, 2100000, 1700000],
+                        borderColor: '#dc3545', // Warna Merah Bootstrap
+                        backgroundColor: 'transparent',
+                        fill: false,
+                        tension: 0.4,
+                        borderWidth: 3,
+                        borderDash: [5, 5], // Garis putus-putus untuk pengeluaran
+                        pointRadius: 4,
+                        pointBackgroundColor: '#dc3545'
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                        labels: {
+                            usePointStyle: true,
+                            padding: 20
+                        }
+                    },
+                    tooltip: {
+                        mode: 'index',
+                        intersect: false,
+                        callbacks: {
+                            label: function(context) {
+                                let label = context.dataset.label || '';
+                                if (label) { label += ': '; }
+                                label += new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(context.parsed.y);
+                                return label;
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: {
+                            callback: function(value) {
+                                return 'Rp ' + value.toLocaleString();
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    });
+    </script>
+</body>
+</html>
